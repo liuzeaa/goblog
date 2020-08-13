@@ -1,18 +1,19 @@
-sudo: false
-language: go
-git:
-  depth: 1
-install: go get -v github.com/gohugoio/hugo
+language: python # 默认是ruby
+python: 3.7
+
+install:
+  # nuo主题需要extended版本的hugo，其他主题可以用最新的普通版本就行
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.deb
+  - sudo dpkg -i hugo*.deb
+branches:
+  only:
+    - master # build master branch only
 script: hugo
 deploy:
   provider: pages
-  skip_cleanup: true
-  github_token: $GH_TOKEN
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
   on:
     branch: master
-  local_dir: public
-  repo: liuzeaa/goblog
-  fqdn:
-  target_branch: master
-  email: 1098367891@qq.com
-  name: liuzeaa
+  local-dir: public

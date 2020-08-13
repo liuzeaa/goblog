@@ -2,6 +2,7 @@ sudo: false
 language: go
 git:
   depth: 1
+before_install: export GOPATH=$HOME/go
 install: go get -v github.com/gohugoio/hugo
 branches:
   only:

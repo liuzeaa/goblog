@@ -6,7 +6,7 @@ tags: minio
 keywords: minio 分布式存储
 categories: minio
 ---
-# minIO使用最佳实践
+
 <!--more-->
 
 ## 约定

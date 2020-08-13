@@ -4,7 +4,7 @@ date: 2018-05-06 17:32:54
 tags: [Express, cookie, session]
 keywords: Express框架 cookie session
 ---
-# Express框架cookie和session
+
 HTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。
 <!--more-->
 

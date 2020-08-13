@@ -4,7 +4,7 @@ date: 2019-03-24 11:11:19
 tags: [vue2.0, 'cli']
 keywords:  vue-cli3设置默认打开浏览器
 ---
-# vue-cli3设置默认打开浏览器
+
 vue-cli3设置默认打开浏览器
 <!--more-->
 项目根目录找到package.json文件， 找到scripts 里 serve 后面加上 --open, 本地开发的时候就会自动打开浏览器了。

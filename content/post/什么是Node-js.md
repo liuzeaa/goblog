@@ -4,7 +4,7 @@ date: 2018-01-08 13:29:21
 tags: Node.js
 keywords: Node.js 什么是Node.js
 ---
-# 什么是Node.js
+
 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。
 它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。
 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。

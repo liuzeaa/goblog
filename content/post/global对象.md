@@ -4,7 +4,7 @@ date: 2018-02-02 14:33:27
 tags: Node.js
 keywords: Node.js global对象
 ---
-# global全局对象
+
 在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。
 在游览器Javascript中全局对象是window，而Node.js中全局对象是global。
 <!--more-->

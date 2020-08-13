@@ -4,7 +4,7 @@ date: 2018-05-14 16:08:03
 tags: [Express, Node.js,express-generator]
 keywords: 使用express-generator快速生成express应用
 ---
-# 使用express-generator快速生成express应用
+
 express-generator是Express应用的快速生成器，可以随意使用此结构或者对其进行修改以最大程度满足自己的需求。
 <!--more-->
 

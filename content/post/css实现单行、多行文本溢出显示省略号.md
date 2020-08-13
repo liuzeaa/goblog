@@ -4,7 +4,7 @@ date: 2017-12-19 10:58:41
 tags: css
 keywords: css实现单行、多行文本溢出显示省略号
 ---
-# css实现单行文本溢出显示省略号
+
 
 ```
 	white-space: nowrap;  		// 规定段落中的文本不进行换行

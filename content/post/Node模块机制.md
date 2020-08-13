@@ -4,7 +4,7 @@ date: 2018-01-08 16:11:02
 tags: Node.js
 keywords: Node.js模块机制
 ---
-# Node模块机制
+
 JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。
 所以JavaScript社区提出了commonjs规范来解决这些问题。
 <!-- more -->

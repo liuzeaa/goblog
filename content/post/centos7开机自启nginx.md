@@ -5,7 +5,6 @@ tags: nginx
 keywords: centos7开机自启nginx
 ---
 
-# centos7开机自启nginx
 
 ```
 sudo systemctl enable nginx.service

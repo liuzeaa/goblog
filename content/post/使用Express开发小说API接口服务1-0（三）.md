@@ -4,7 +4,7 @@ date: 2018-05-26 10:54:41
 tags: [Express,Node.js, API]
 keywords: 使用Express开发小说API接口服务1.0（三）
 ---
-# 使用Express开发小说API接口服务1.0（三）
+
 之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。
 <!--more-->
 # app.js 增加错误处理

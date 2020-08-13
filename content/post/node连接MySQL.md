@@ -4,7 +4,7 @@ date: 2018-05-10 15:40:04
 tags: [Node.js, MySQL]
 keywords: node连接MySQL
 ---
-# node连接MySQL
+
 之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。
 <!--more-->
 ## 安装

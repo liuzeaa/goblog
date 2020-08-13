@@ -5,7 +5,7 @@ date: 2018-05-11 16:47:01
 tags: es6 Promise
 categories: es6
 ---
-### Promise使用示例（ajax）
+<!--more-->
 ```
 /*使用Promise封装ajax*/
 function getList(url, data) {

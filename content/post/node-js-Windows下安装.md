@@ -4,7 +4,7 @@ date: 2017-12-12 16:26:01
 tags: Node.js
 keywords: Node.js安装 Windows
 ---
-# 首先去Node.js中文网下载安装包
+
 
 - 偶数位为稳定版本，奇数位为非稳定版本（开发版）
 - 稳定版本中已发布的API是不会改变的

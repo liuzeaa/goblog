@@ -4,7 +4,7 @@ date: 2018-05-18 13:26:05
 tags: [Express,Node.js, API]
 keywords: 使用Express开发小说API接口服务1.0（二）
 ---
-# 使用Express开发小说API接口服务1.0(二)
+
 之前完成了首页和搜索的接口，现在就开始写剩下的接口。
 <!--more-->
 ## 获取小说源

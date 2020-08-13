@@ -4,7 +4,7 @@ date: 2018-12-19 20:14:17
 tags: [移动端, javascript，clipboard.js]
 keywords: 移动端js复制内容到剪贴板、clipboard.js
 ---
-# 移动端js复制内容到剪贴板
+
 clipboard.js是一个没有Flash。没有框架。只需3kb gzipped，实现了将文本复制到剪贴板。兼容性做得好，不兼容的话clipboard.js会优雅地降级，会自动选中文本，用户可以自己选择复制。
 <!--more-->
 

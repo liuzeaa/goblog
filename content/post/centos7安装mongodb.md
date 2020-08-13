@@ -4,7 +4,7 @@ date: 2018-12-16 19:22:11
 tags: MongoDB
 keywords: centos7安装MongoDB
 ---
-# centos7安装MongoDB
+
 先去MongoDB官网的文档中的[Install on Red Hat](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum)，检查是否有更新，当前MongoDB版本4.0。
 <!--more-->
 

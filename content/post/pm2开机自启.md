@@ -5,7 +5,7 @@ tags: [pm2, Node.js]
 keywords: pm2开机自启
 ---
 
-# pm2开机自启
+
 
 ```
 pm2 start  # 你要启动的程序，如果有多个都要先启动

@@ -4,7 +4,7 @@ date: 2018-12-23 11:30:36
 tags: [移动端, vue2.0，clipboard.js]
 keywords: 在vue使用clipboard.js
 ---
-# 在vue使用clipboard.js
+
 上一篇写了怎么使用clipboard.js，今天就写下怎么在vue里面使用clipboard.js
 <!--more-->
 

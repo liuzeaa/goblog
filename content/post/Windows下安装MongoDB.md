@@ -4,7 +4,7 @@ date: 2018-05-08 15:30:32
 tags: [MongoDB, Windows]
 keywords:  Windows下安装MongoDB
 ---
-# Windows下安装MongoDB
+
 MongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。
 <!--more-->
 

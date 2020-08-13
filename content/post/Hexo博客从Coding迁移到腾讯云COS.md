@@ -3,7 +3,7 @@ title: Hexo博客从Coding迁移到腾讯云COS
 date: 2019-03-30 17:34:07
 tags: [Hexo, COS]
 ---
-# Hexo博客从Coding迁移到腾讯云COS
+
 最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages  不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。
 <!-- more -->
 

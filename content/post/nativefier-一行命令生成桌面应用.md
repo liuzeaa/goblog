@@ -6,7 +6,7 @@ tags: nativefier
 keywords: nativefier 一行命令生成桌面应用
 categories: 桌面应用
 ---
-# nativefier 一行命令生成桌面应用
+
 nativefier 可以快速生成可执行文件（.app，.exe，等），在Windows，MacOS和Linux的使用。
 <!--more-->
 

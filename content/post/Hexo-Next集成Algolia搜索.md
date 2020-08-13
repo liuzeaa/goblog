@@ -4,7 +4,7 @@ date: 2017-12-22 13:13:18
 tags: Hexo
 keywords: Hexo+Next集成Algolia搜索
 ---
-# 集成Algolia搜索
+
 起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。
 注：Algolia搜索在版本** 5.1.0 **中引入，要使用此功能请确保所使用的 NexT 版本在此之后
 <!-- more -->

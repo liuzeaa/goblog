@@ -4,7 +4,7 @@ date: 2018-05-26 11:13:37
 tags: [apidoc,Node.js, API]
 keywords: 使用apidoc文档神器，快速生成api文档
 ---
-# 使用apidoc文档神器，快速生成api文档
+
 写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。
 <!--more-->
 

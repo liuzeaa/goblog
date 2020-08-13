@@ -4,7 +4,7 @@ date: 2018-03-01 16:03:22
 tags: Node.js
 keywords: Node.js url模块
 ---
-# url模块
+
 url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。
 模块只有三个方法，用起来也简单。
 <!--more-->

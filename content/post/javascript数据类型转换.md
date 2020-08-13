@@ -4,7 +4,7 @@ date: 2018-05-05 17:14:25
 tags: [javascript, 数据类型转换, 面试题]
 keywords: javascript数据类型转换
 ---
-# javascript数据类型转换
+
 在面试中经常会碰见问类型转换的问题，例如[] == false、[] == {}返回的是真还是假等等。。。
 <!--more-->
 

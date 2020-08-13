@@ -1,3 +1,4 @@
-baseURL = "/"
+baseURL = "https://liuzeaa.github.io/goblog/"
 languageCode = "zh-cn"
 title = "阿泽的博客"
+theme = "hyde"

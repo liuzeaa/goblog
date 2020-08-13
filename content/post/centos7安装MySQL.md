@@ -4,7 +4,7 @@ date: 2019-03-17 18:09:33
 tags: MySQL
 keywords: centos7安装MySQL
 ---
-# centos7安装MySQL
+
 先去MySQL官网找到下载链接(https://dev.mysql.com/downloads/repo/yum/)
 <!--more-->
 

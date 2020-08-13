@@ -4,7 +4,7 @@ date: 2018-05-17 15:10:56
 tags: [Express,Node.js, API]
 keywords: 使用Express开发小说API接口服务1.0（一）
 ---
-# 使用Express开发小说API接口服务1.0（一）
+
 1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。
 目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。
 <!--more-->

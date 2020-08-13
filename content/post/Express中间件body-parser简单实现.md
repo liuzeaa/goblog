@@ -4,7 +4,7 @@ date: 2018-04-18 11:49:16
 tags: Express
 keywords: Express中间件body-parser简单实现
 ---
-# Express中间件body-parser简单实现
+
 之前文章写了怎么用body-parser中间件处理post请求，今天就大概实现下body-parser中urlencoded 这个方法。
 <!--more-->
 首先通过命令提示输入 mkdir lib && cd lib。

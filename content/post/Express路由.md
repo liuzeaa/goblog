@@ -4,7 +4,7 @@ date: 2018-05-07 17:50:08
 tags: [Express, 路由]
 keywords: Express路由
 ---
-# Express路由
+
 之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。
 <!--more-->
 

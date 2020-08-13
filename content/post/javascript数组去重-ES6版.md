@@ -5,7 +5,6 @@ tags: [数组, ES6, javascript]
 keywords: javascript数组去重(ES6版)
 ---
 
-# javascript数组去重(ES6版)
 之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。
 今天就利用 Set 来去重。
 <!--more-->

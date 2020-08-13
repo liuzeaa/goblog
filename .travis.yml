@@ -1,0 +1,17 @@
+sudo: false
+language: go
+git:
+  depth: 1
+install: go get -v github.com/spf13/hugo
+branches:
+  only:
+    - master # build master branch only
+script: hugo
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: public

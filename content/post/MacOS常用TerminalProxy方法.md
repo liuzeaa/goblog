@@ -1,7 +1,6 @@
 ---
 title: "MacOS常用TerminalProxy方法"
 date: 2020-08-14T14:41:34+08:00
-draft: true
 ---
 
 首先配置好自己本地的sock监听地址

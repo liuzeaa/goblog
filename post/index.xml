@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 阿泽的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Aug 2020 14:37:01 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 14:41:34 +0800</lastBuildDate>
     
 	<atom:link href="https://liuzeaa.github.io/goblog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MacOS常用TerminalProxy方法</title>
+      <link>https://liuzeaa.github.io/goblog/post/macos%E5%B8%B8%E7%94%A8terminalproxy%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Fri, 14 Aug 2020 14:41:34 +0800</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/macos%E5%B8%B8%E7%94%A8terminalproxy%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;p&gt;首先配置好自己本地的sock监听地址&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>verdaccio搭建npm私有库</title>

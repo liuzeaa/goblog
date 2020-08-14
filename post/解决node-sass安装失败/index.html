@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>解决node-sass安装失败 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>解决node-sass安装失败</h1>
+  <time datetime=2020-06-14T20:21:00Z class="post-date">Sun, Jun 14, 2020</time>
+  <p>node-sass 安装时需要下载一个node-sass &hellip;binding.node 文件，所以设置了淘宝源还是经常安装失败。还需要配置 sass_binary_site</p>
+<pre><code>yarn config set registry http://registry.npm.taobao.org
+yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+或者
+npm set registry https://registry.npm.taobao.org
+npm set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+</code></pre>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>global对象 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>global对象</h1>
+  <time datetime=2018-02-02T14:33:27Z class="post-date">Fri, Feb 2, 2018</time>
+  <p>在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。
+在游览器Javascript中全局对象是window，而Node.js中全局对象是global。</p>
+<h2 id="全局变量在所有模块中均可使用-但以下变量的作用域只在模块内">全局变量在所有模块中均可使用。 但以下变量的作用域只在模块内</h2>
+<pre><code>__dirname
+__filename
+exports
+module
+require()
+</code></pre><h2 id="__dirname">__dirname</h2>
+<pre><code>console.log(__dirname) # 获取当前模块的文件所在的文件夹名称的绝对路径
+</code></pre><h2 id="__filename">__filename</h2>
+<pre><code>console.log(__filename) # 获取当前模块的文件名称-解析后的绝对路径
+</code></pre><h2 id="setimmediatecallback-args">setImmediate(callback[, &hellip;args])</h2>
+<pre><code>setImmediate(() =&gt; {
+	console.log('坑呀') # 把参数函数放到下一个时间环中执行
+});
+</code></pre><h2 id="clearimmediateimmediate">clearImmediate(immediate)</h2>
+<pre><code>let a = setImmediate(() =&gt; {
+	console.log('坑呀') # 取消一个由 setImmediate() 创建的 Immediate 对象
+});
+clearImmediate(a)
+</code></pre><h2 id="process-进程">process 进程</h2>
+<h3 id="processcwd">process.cwd()</h3>
+<pre><code>console.log(process.cwd()) # 方法返回 Node.js 进程当前工作的目录。
+</code></pre><h3 id="processargv">process.argv</h3>
+<pre><code>// a.js
+console.log(process.argv) 
+
+// 执行
+node a.js a=1 b=2
+
+// 输出
+[ 'C:\\Program Files\\nodejs\\node.exe',
+  'c:\\Users\\windows\\Desktop\\新建文件夹\\a.js',
+  'a=1',
+  'b=2' ]
+</code></pre><p>process.argv 属性返回一个数组，这个数组包含了启动Node.js进程时的命令行参数。第一个元素为process.execPath。如果需要获取argv[0]的值请参见 process.argv0。第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。</p>
+<h3 id="processenv">process.env</h3>
+<pre><code>console.log(process.env) # 返回一个包含用户环境信息的对象
+</code></pre><p>可以修改这个对象</p>
+<pre><code>process.env.foo = 'bar';
+console.log(process.env.foo); # 输出bar
+</code></pre><p>但是不可以用这种方法去修改</p>
+<pre><code>node http.js  'process.env.foo = &quot;bar&quot;'
+</code></pre><p>用 delete从process.env中删除一个属性</p>
+<pre><code>process.env.foo = 'bar';
+delete process.env.foo;
+console.log(process.env.foo); # 输出 undefined
+</code></pre><p>注: 在process.env中新增一个属性，会将属性值转换成字符串、 在Windows系统下，环境变量是不区分大小写的。</p>
+<h3 id="processmemoryusage">process.memoryUsage()</h3>
+<pre><code>console.log(process.memoryUsage()) # 返回Node.js进程的内存使用情况的对象，该对象每个属性值的单位为字节。
+
+// 输出
+{ rss: 23588864,
+  heapTotal: 7708672,
+  heapUsed: 4430656,
+  external: 8224 }
+</code></pre><p>rss（resident set size）：所有内存占用，包括指令区和堆栈。
+heapTotal：&ldquo;堆&quot;占用的内存，包括用到的和没用到的。
+heapUsed：用到的堆的部分。
+external： V8 引擎内部的 C++ 对象占用的内存。</p>
+<h3 id="processchdirdirectory">process.chdir(directory)</h3>
+<pre><code>  console.log(process.cwd())
+  process.chdir('..') # 方法变更Node.js进程的当前工作目录，如果变更目录失败会抛出异常(例如，如果指定的目录不存在)。
+  console.log(process.cwd())
+
+  // 输出   '..'切换到上一级目录
+  C:\Users\windows\Desktop\新建文件夹
+  C:\Users\windows\Desktop
+</code></pre><h3 id="processnexttickcallback-args">process.nextTick(callback[, &hellip;args])</h3>
+<pre><code>process.nextTick(function(){
+  console.log('nextTick'); # 放到当前任务末尾执行
+})
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html">http://www.ruanyifeng.com/blog/2017/04/memory-leak.html</a>
+<a href="http://nodejs.cn/api/process.html#process_process">http://nodejs.cn/api/process.html#process_process</a>
+<a href="http://nodejs.cn/api/globals.html">http://nodejs.cn/api/globals.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

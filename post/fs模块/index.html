@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>fs模块 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>fs模块</h1>
+  <time datetime=2018-02-22T14:32:19Z class="post-date">Thu, Feb 22, 2018</time>
+  <p>fs模块是Node.js提供来操作本地文件（读、写、复制、删除&hellip;）等功能的模块。
+所有的方法都有异步和同步的形式。
+异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。
+当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。</p>
+<h2 id="读取文件">读取文件</h2>
+<h3 id="同步方法-readfilesync">同步方法 readFileSync()</h3>
+<pre><code>let fs = require('fs');
+
+try{
+    let buf = fs.readFileSync('./hello.txt', { encoding: 'utf-8' });
+    console.log(buf); # 输出: 入坑了..
+}catch(err){
+    console.log('读取失败了: ' + err.message)
+}
+</code></pre><p>readFileSync方法的第一个参数是文件路径可以是（string|Buffer|URL|integer）类型，第二个参数可以是一个表示配置的对象。默认的配置对象是{ encoding: null, flag: &lsquo;r&rsquo; }，encoding：文件编码默认为null，flag：读取模式默认为r（只读）。如果第二个参数不指定编码（encoding），readFileSync方法返回原始的 buffer。</p>
+<h3 id="异步方法-readfile">异步方法 readFile()</h3>
+<pre><code>let fs = require('fs');
+fs.readFile('./hello.txt', { encoding: 'utf-8' }, (err,data) =&gt; {
+    if (err){
+        throw err;
+    }
+    console.log(data); # 输出: 入坑了..
+});
+</code></pre><p>和readFileSync方法参数一样，只多了一个回调函数。
+回调有两个参数 (err, data)，其中 data 是文件的内容。</p>
+<h2 id="写入文件">写入文件</h2>
+<h3 id="同步方法-writefilesync">同步方法 writeFileSync()</h3>
+<pre><code>let fs = require('fs');
+
+fs.writeFileSync('./1.txt','node入坑指南...',{encoding: 'utf8'})
+</code></pre><p>第一个参数是路径
+第二的参数是写入的数据
+第三个参数是一个可配置的对象{encoding：utf8, mode: 0o666, flag: &lsquo;w&rsquo;}</p>
+<ul>
+<li>encoding: 文件编码默认为utf8</li>
+<li>mode：  设置文件模式(权限)，文件创建默认权限为 0o666(可读，可写)。</li>
+<li>flag：  文件打开模式默认为w(写入)</li>
+</ul>
+<p>如果 options 是一个字符串，则它指定了字符编码。例如：</p>
+<pre><code>fs.writeFileSync('./1.txt', '111...', 'utf8')
+</code></pre><h3 id="异步方法-writefile">异步方法 writeFile()</h3>
+<pre><code>let fs = require('fs');
+
+fs.writeFile('./2.txt','蓝胖纸',(err) =&gt; {
+    if(err){
+        throw err;
+    }
+    console.log('写入成功');
+})
+</code></pre><p>异步地写入数据到文件，如果文件已经存在，则替代文件。 data 可以是一个字符串或一个 buffer。
+如果 data 是一个 buffer，则忽略 encoding 选项。它默认为 &lsquo;utf8&rsquo;。
+和writeFileSync方法参数一样，只多了一个回调函数。</p>
+<h2 id="创建目录">创建目录</h2>
+<h3 id="同步方法-mkdirsync">同步方法 mkdirSync()</h3>
+<pre><code>fs.mkdirSync('./hello',0o777);
+</code></pre><p>在当前目录下面创建一个hello的文件夹。
+第一个参数是路径。
+第二个参数是设置文件模式(权限)，默认为0o777。</p>
+<h3 id="异步方法-mkdir">异步方法 mkdir()</h3>
+<pre><code>fs.mkdir('./lanpangzhi', 0o777, function (err) {
+    if (err) throw err;
+});
+</code></pre><p>和mkdirSync方法参数一样，只多了一个回调函数。
+注： 所有的异步方法最后一个参数都是回调函数，回调函数的第一个参数都是异常。</p>
+<h2 id="读取目录">读取目录</h2>
+<h3 id="同步方法-readdirsync">同步方法 readdirSync()</h3>
+<pre><code>let a = fs.readdirSync(process.cwd())
+console.log(a)
+</code></pre><p>输出当前工作目录下的文件数组列表。
+第一个参数是路径。
+第二个参数是设置编码。</p>
+<h3 id="异步方法-readdir">异步方法 readdir()</h3>
+<pre><code>fs.readdir(process.cwd(),(err, files) =&gt; {
+    if (err){
+        throw err;
+    }
+    console.log(files)
+})
+</code></pre><p>和readdirSync方法参数一样，只多了一个回调函数。
+回调函数有两个参数，第二个参数是文件数组列表。</p>
+<h2 id="查看文件信息">查看文件信息</h2>
+<h3 id="同步方法-statsync">同步方法 statSync()</h3>
+<pre><code>let stats = fs.statSync('./a.js');
+console.log(stats)
+</code></pre><p>接受一个路径参数，返回一个 fs.Stats 实例。</p>
+<h4 id="fsstats-实例的方法">fs.Stats 实例的方法</h4>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">stats.isFile()</td>
+<td align="left">如果是文件返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="center">stats.isDirectory()</td>
+<td align="left">如果是目录返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="center">stats.isBlockDevice()</td>
+<td align="left">如果是块设备返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="center">stats.isCharacterDevice()</td>
+<td align="left">如果是字符设备返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="center">stats.isSymbolicLink()</td>
+<td align="left">如果是软链接返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="center">stats.isFIFO()</td>
+<td align="left">如果是FIFO，返回true，否则返回 false。FIFO是UNIX中的一种特殊类型的命令管道。</td>
+</tr>
+<tr>
+<td align="center">stats.isSocket()</td>
+<td align="left">如果是 Socket 返回 true，否则返回 false。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="stat-时间值">Stat 时间值</h4>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">atime</td>
+<td align="left">&ldquo;访问时间&rdquo; - 文件数据最近被访问的时间。</td>
+</tr>
+<tr>
+<td align="center">mtime</td>
+<td align="left">&ldquo;修改时间&rdquo; - 文件数据最近被修改的时间。</td>
+</tr>
+<tr>
+<td align="center">ctime</td>
+<td align="left">&ldquo;变化时间&rdquo; - 文件状态最近更改的时间。</td>
+</tr>
+<tr>
+<td align="center">birthtime</td>
+<td align="left">&ldquo;创建时间&rdquo; - 文件创建的时间。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="异步方法-stat">异步方法 stat()</h3>
+<pre><code>let fs = require('fs');
+
+fs.stat('./hello', (err, stats)=&gt;{
+    if(err){
+        throw err;
+    }
+    console.log(stats);
+});
+
+</code></pre><p>和statSync方法参数一样，只多了一个回调函数。
+回调函数有两个参数，第二个参数是fs.Stats实例。</p>
+<h2 id="删除文件">删除文件</h2>
+<h3 id="同步方法-unlinksync">同步方法 unlinkSync()</h3>
+<pre><code>let fs = require('fs');
+
+fs.unlinkSync('./1.txt');
+</code></pre><p>删除当前目录下的1.txt文件，返回undefined。
+第一个参数是路径。</p>
+<h3 id="异步方法-unlink">异步方法 unlink()</h3>
+<pre><code>let fs = require('fs');
+
+fs.unlink('./2.txt', (err) =&gt; {
+    if(err){
+        console.log(err)
+    }
+})
+</code></pre><p>和unlinkSync方法参数一样。</p>
+<h1 id="参考">参考</h1>
+<p><a href="http://nodejs.cn/api/fs.html">http://nodejs.cn/api/fs.html</a>
+<a href="http://www.runoob.com/nodejs/nodejs-fs.html">http://www.runoob.com/nodejs/nodejs-fs.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

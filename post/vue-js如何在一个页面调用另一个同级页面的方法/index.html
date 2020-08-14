@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vue.js如何在一个页面调用另一个同级页面的方法 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Vue.js如何在一个页面调用另一个同级页面的方法</h1>
+  <time datetime=2020-08-13T09:05:27Z class="post-date">Thu, Aug 13, 2020</time>
+  <h3 id="实际开发过程中当前组件调用完方法之后也许会调取同一级组件中的方法本人暂时想到两种办法">实际开发过程中，当前组件调用完方法之后，也许会调取同一级组件中的方法，本人暂时想到两种办法:</h3>
+<h4 id="1-vmoneventcallback">1. vm.$on(event,callback)</h4>
+<ol>
+<li>新建一个工具函数util.js，代码如下：
+<pre><code>import Vue from 'vue'
+export default new Vue;
+</code></pre></li>
+<li>然后两个页面都引用它
+<pre><code>import util from './util'
+</code></pre><p>调用方：</p>
+<pre><code>methonds:{
+    functionA(){
+        util.$emit('test','test')
+    }
+}
+</code></pre><p>被调用方：</p>
+<pre><code>methonds:{
+    functionB(){
+           
+    }
+},
+mounted(){
+    util.$on('test',(test)=&gt;{
+        console.log(test);
+        this.functionB();
+    })
+}
+</code></pre></li>
+</ol>
+<h4 id="2-vuex">2. vuex</h4>
+<ol>
+<li>
+<p>新建store.js</p>
+<pre><code>import Vue from 'vue';
+import Vuex from 'vuex';
+Vue.use(Vuex);
+   
+const store = new Vuex.Store({
+    state: {
+       list:[]
+    },
+    mutations: {
+        setList(state,payload){
+            state.list = payload
+        }
+    },
+    actions: {
+        getList({commit}){
+            getList().then(res=&gt;{
+                commit('setList',res.data)
+            })
+        }
+    }
+});
+   
+export default store;
+</code></pre></li>
+<li>
+<p>使用</p>
+<p>调用方：</p>
+<pre><code>import {mapAction} from 'vuex'
+   
+methonds:{
+    ...mapAction([
+        'getList'
+    ]),
+    functionA(){
+        this.getList()
+    }
+}
+</code></pre><p>被调用方：</p>
+<pre><code>import {mapAction,mapState} from 'vuex'
+   
+computed:{
+  ...mapState([
+    'list'
+  ])  
+},
+methonds:{
+    ...mapAction([
+        'getList'
+    ])
+},
+mounted(){
+    this.getlist()
+}
+</code></pre></li>
+</ol>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

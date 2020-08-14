@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript，clipboard.js on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/javascriptclipboard.js/</link>
+    <description>Recent content in javascript，clipboard.js on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Dec 2018 20:14:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/javascriptclipboard.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>移动端js复制内容到剪贴板</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E7%A7%BB%E5%8A%A8%E7%AB%AFjs%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF/</link>
+      <pubDate>Wed, 19 Dec 2018 20:14:17 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E7%A7%BB%E5%8A%A8%E7%AB%AFjs%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF/</guid>
+      <description>&lt;p&gt;clipboard.js是一个没有Flash。没有框架。只需3kb gzipped，实现了将文本复制到剪贴板。兼容性做得好，不兼容的话clipboard.js会优雅地降级，会自动选中文本，用户可以自己选择复制。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

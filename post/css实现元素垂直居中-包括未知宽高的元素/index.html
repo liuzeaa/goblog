@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>css实现元素垂直水平居中-包括未知宽高的元素 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>css实现元素垂直水平居中-包括未知宽高的元素</h1>
+  <time datetime=2018-04-28T13:14:04Z class="post-date">Sat, Apr 28, 2018</time>
+  <p>这个一道很经典的面试题，做项目中也常会出现这样的需求。
+现在我就用几种比较常用的方法。兼容性也列出来。</p>
+<h2 id="第一种已知宽高定位加负边距解决兼容到ie6">第一种已知宽高（定位加负边距解决）兼容到IE6</h2>
+<pre><code>position: absolute;
+z-index: 8;
+left: 50%;
+top: 50%;
+width: 200px;
+height: 200px;
+margin-left: -100px;
+margin-top: -100px;
+background: red;
+</code></pre><p><a href="http://jsbin.com/xabolah/1/edit?html,output">demo地址 JSBin</a></p>
+<h2 id="第二种未知宽高-定位加margin解决-兼容到ie8-移动端推荐使用">第二种未知宽高 (定位加margin解决) 兼容到IE8 移动端推荐使用</h2>
+<pre><code>position: absolute;
+z-index: 8;
+left: 0;
+top: 0;
+bottom: 0;
+right: 0;
+width: 200px;
+height: 200px;
+margin: auto;
+background: red;
+</code></pre><p>如果改变宽度和高度还是垂直水平居中的。
+<a href="http://jsbin.com/pulamek/edit?html,css,output">demo地址 JSBin</a></p>
+<h2 id="第三种未知宽高-定位加transform解决-兼容到ie9-移动端推荐使用">第三种未知宽高 (定位加transform解决) 兼容到IE9 移动端推荐使用</h2>
+<pre><code>position: absolute;
+z-index: 8;
+left: 50%;
+top: 50%;
+width: 200px;
+height: 200px;
+transform: translate(-50%, -50%);
+background: red;
+</code></pre><p>如果改变宽度和高度还是垂直水平居中的。
+<a href="http://jsbin.com/noyise/edit?html,css,output">demo地址 JSBin</a></p>
+<h2 id="第四种未知宽高-弹性盒子模型解决-兼容到ie10">第四种未知宽高 (弹性盒子模型解决) 兼容到IE10</h2>
+<pre><code>display: flex;
+display: -webkit-flex;
+align-items:center;
+justify-content: center;
+</code></pre><p>如果改变宽度和高度还是垂直水平居中的。
+<a href="http://jsbin.com/zimalig/edit?html,css,output">demo地址 JSBin</a></p>
+<h2 id="第五种未知宽高-table特性解决的-兼容到ie6-pc端推荐使用">第五种未知宽高 (table特性解决的) 兼容到IE6 PC端推荐使用</h2>
+<pre><code>#box{
+    width: 100px;
+	height:100px;
+	text-align:center;
+	font-size:0;
+    background: red
+}
+#box:after,#box span{
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	width:0;
+	height:100%;
+	vertical-align:middle;
+}
+#box:after{
+	content:'';
+}
+#box p{
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align:middle;
+	font-size:16px;
+}
+</code></pre><p><a href="http://jsbin.com/pipasoq/edit?html,css,output">demo地址 JSBin</a></p>
+<h1 id="参考">参考</h1>
+<p><a href="http://demo.doyoe.com/css/alignment/">http://demo.doyoe.com/css/alignment/</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

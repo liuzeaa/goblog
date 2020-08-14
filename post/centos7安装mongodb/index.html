@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>centos7安装MongoDB &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>centos7安装MongoDB</h1>
+  <time datetime=2018-12-16T19:22:11Z class="post-date">Sun, Dec 16, 2018</time>
+  <p>先去MongoDB官网的文档中的<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum">Install on Red Hat</a>，检查是否有更新，当前MongoDB版本4.0。</p>
+<h2 id="配置包管理系统yum">配置包管理系统（yum）</h2>
+<pre><code>cd /etc/yum.repos.d/   // 进入这个目录
+touch mongodb-org-4.0.repo  // 创建一个新的YUM存储库配置文件
+</code></pre><p>vim 编辑 mongodb-org-4.0.repo 然后把如下代码复制到文件里</p>
+<pre><code>[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+</code></pre><p>ESC  :wq 退出并保存</p>
+<h2 id="安装">安装</h2>
+<pre><code>sudo yum install -y mongodb-org
+</code></pre><ul>
+<li>mongodb-org-server- mongod守护程序，以及相应的init脚本和配置。</li>
+<li>mongodb-org-mongos- mongos守护进程。</li>
+<li>mongodb-org-shell - mongo shell，一个MongoDB的交互式JavaScript接口，用于执行命令行的管理任务。</li>
+<li>mongodb-org-tools - 包含几个MongoDB工具，用于导入和导出数据，统计信息以及其他实用程序。</li>
+</ul>
+<h2 id="启动mongodb">启动MongoDB</h2>
+<p>安装完成后，启动MongoDB</p>
+<pre><code>sudo service mongod start  // 启动
+sudo service mongod stop  // 停止
+sudo service mongod restart // 重启
+</code></pre><p>设置MongoDB将在系统重新启动后启动</p>
+<pre><code>sudo chkconfig mongod on
+</code></pre><h2 id="验证是否安装成功">验证是否安装成功</h2>
+<pre><code>mongo
+db.version()  // 会出现版本号，我这里是4.0.4
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum</a></p>
+<p><a href="https://linuxize.com/post/how-to-install-mongodb-on-centos-7/">https://linuxize.com/post/how-to-install-mongodb-on-centos-7/</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

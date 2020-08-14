@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>npm on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/npm/</link>
+    <description>Recent content in npm on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 14 Jun 2020 20:21:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决node-sass安装失败</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Sun, 14 Jun 2020 20:21:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</guid>
+      <description>&lt;p&gt;node-sass 安装时需要下载一个node-sass &amp;hellip;binding.node 文件，所以设置了淘宝源还是经常安装失败。还需要配置 sass_binary_site&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>发布一个自己的NPM包</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84npm%E5%8C%85/</link>
+      <pubDate>Thu, 18 Apr 2019 20:01:57 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84npm%E5%8C%85/</guid>
+      <description>&lt;p&gt;用了这么多次别人发布的包，今天咱们自己发布一个npm包&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>npm install 报错提示请使用管理员</title>
+      <link>https://liuzeaa.github.io/goblog/post/npm-install-%E6%8A%A5%E9%94%99%E6%8F%90%E7%A4%BA%E8%AF%B7%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98/</link>
+      <pubDate>Wed, 27 Dec 2017 11:07:20 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/npm-install-%E6%8A%A5%E9%94%99%E6%8F%90%E7%A4%BA%E8%AF%B7%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98/</guid>
+      <description>&lt;p&gt;之前把node升级了，npm自动升级到 &lt;strong&gt;npm5&lt;/strong&gt; 再npm install xxx 会报如下图错误&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>npm使用介绍</title>
+      <link>https://liuzeaa.github.io/goblog/post/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Wed, 20 Dec 2017 14:56:09 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;p&gt;npm是随同NodeJS一起安装的包管理工具、官网&lt;a href=&#34;https://www.npmjs.com&#34;&gt;https://www.npmjs.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>npm设置淘宝镜像</title>
+      <link>https://liuzeaa.github.io/goblog/post/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Fri, 15 Dec 2017 16:06:34 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;我们通过npm install xxx 安装包的过程会特别慢，或者安装半天突然报错。这是因为npm镜像地址在国外，所以访问会慢有的时候还访问不到&amp;hellip;..（天朝的万能的防火墙）&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

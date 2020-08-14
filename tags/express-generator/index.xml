@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>express-generator on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/express-generator/</link>
+    <description>Recent content in express-generator on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 May 2018 16:08:03 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/express-generator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用express-generator快速生成express应用</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express-generator%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90express%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Mon, 14 May 2018 16:08:03 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express-generator%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90express%E5%BA%94%E7%94%A8/</guid>
+      <description>&lt;p&gt;express-generator是Express应用的快速生成器，可以随意使用此结构或者对其进行修改以最大程度满足自己的需求。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

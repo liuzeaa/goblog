@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>javascript数据类型转换 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>javascript数据类型转换</h1>
+  <time datetime=2018-05-05T17:14:25Z class="post-date">Sat, May 5, 2018</time>
+  <p>在面试中经常会碰见问类型转换的问题，例如[] == false、[] == {}返回的是真还是假等等。。。</p>
+<h2 id="默认是false的五个值">默认是false的五个值</h2>
+<pre><code>null undefined NaN 0 ''
+</code></pre><p>记住只有这五个值是假的剩下的全部是真的。</p>
+<h2 id="转换规则">转换规则</h2>
+<ol>
+<li>如果是一个值判断是否是真假，除了默认是false的五个值剩下的全部是true。</li>
+<li>如果是两个值比较是否相等，遵循如下规则。
+val1 == val2 如果两个值可能不是同一数据类型，如果是==比较的话，会默认进行数据转换。
+2.1 object == object，比较永远不相等。
+2.2 object == string 先将对象转换成字符串（调用toString方法），然后再比较。
+[] 转换成字符串 &quot;&rdquo;
+{} 转换成字符串 &ldquo;[object Object]&rdquo;
+2.3 object == boolean 先将对象转换成字符串（toString），再把字符串转换成数字（Number）、布尔值转换成数字（true 转换成 1 false 换成成 0）然后让两个数字进行比较。
+Number(&quot;&quot;) 会输出 0
+2.4 object == number  先将对象转换成字符串（toString），再把字符串转换成数字（Number），再进行比较。
+2.5 number == boolean 布尔值转换成数字，然后再比较。
+2.6 number == string  字符串转换成数字，然后再比较。
+2.7 string == boolean 都转换成数字，，然后再比较。
+2.8 null == undefined 结果是true。
+2.9 null 或者 undefined 比较另外的所有值，结果都是false，不相等。</li>
+</ol>
+<p>例如：
+[] == false 返回 true 2.3规则。
+[] == []  返回 false 2.1规则。
+2 == true 返回 false 2.5规则。
+=== 三个等号还会比较数据类型。
+这些规则背下来，就能完美的应付这样的面试题了，加油！</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

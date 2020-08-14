@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>移动端js复制内容到剪贴板 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>移动端js复制内容到剪贴板</h1>
+  <time datetime=2018-12-19T20:14:17Z class="post-date">Wed, Dec 19, 2018</time>
+  <p>clipboard.js是一个没有Flash。没有框架。只需3kb gzipped，实现了将文本复制到剪贴板。兼容性做得好，不兼容的话clipboard.js会优雅地降级，会自动选中文本，用户可以自己选择复制。</p>
+<h2 id="兼容性">兼容性</h2>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- raw HTML omitted --></th>
+<th align="center"><!-- raw HTML omitted --></th>
+<th align="center"><!-- raw HTML omitted --></th>
+<th align="center"><!-- raw HTML omitted --></th>
+<th align="center"><!-- raw HTML omitted --></th>
+<th align="center"><!-- raw HTML omitted --></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">42+ ✔</td>
+<td align="center">12+ ✔</td>
+<td align="center">41+ ✔</td>
+<td align="center">9+ ✔</td>
+<td align="center">29+ ✔</td>
+<td align="center">10+ ✔</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安装">安装</h2>
+<pre><code>npm install clipboard --save
+</code></pre><p>或者可以用<a href="https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers">cdn地址</a></p>
+<h2 id="使用">使用</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">从属性复制文本
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">data-clipboard-text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://blog.langpz.com&#34;</span>&gt;
+    复制
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+从另一个元素复制文本
+&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;foo&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/lanpangzhi&#34;</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">data-clipboard-target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#foo&#34;</span>&gt;
+    复制
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+从另一个元素剪切文本
+&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://api.langpz.com&#34;</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">data-clipboard-action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cut&#34;</span> <span style="color:#a6e22e">data-clipboard-target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#xxx&#34;</span>&gt;
+    复制
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ClipboardJS</span>(<span style="color:#e6db74">&#39;.btn&#39;</span>)  <span style="color:#75715e">// 传入dom节点实例化ClipboardJS
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><ul>
+<li>data-clipboard-text: 需要复制的内容</li>
+<li>data-clipboard-target: 需要复制内容的选择器</li>
+<li>data-clipboard-action: 默认copy, 复制的动作，仅适用于input或textarea元素
+<a href="https://jsbin.com/fisusorihu/edit?html,console,output">demo地址</a></li>
+</ul>
+<p>clipboard 还可以绑定success 和 error 事件</p>
+<pre><code>&lt;button class=&quot;btn&quot; data-clipboard-text=&quot;http://blog.langpz.com&quot;&gt;
+    复制
+&lt;/button&gt;
+  
+&lt;script&gt;
+  var clipboard = new ClipboardJS('.btn');
+
+clipboard.on('success', function(e) {
+  console.info('Action:', e.action);
+  console.info('Text:', e.text);
+  console.info('Trigger:', e.trigger);
+
+  e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+  console.error('Action:', e.action);
+  console.error('Trigger:', e.trigger);
+});
+&lt;/script&gt;
+</code></pre><ul>
+<li>e.action: 复制的动作</li>
+<li>e.text: 复制的内容</li>
+<li>e.trigger: 触发的dom
+<a href="https://jsbin.com/yegakuboto/edit?html,console,output">demo地址</a></li>
+</ul>
+<p>clipboard 还有一些高级用法，建议去官网查看。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://clipboardjs.com/">https://clipboardjs.com/</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

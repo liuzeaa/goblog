@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>url模块 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>url模块</h1>
+  <time datetime=2018-03-01T16:03:22Z class="post-date">Thu, Mar 1, 2018</time>
+  <p>url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。
+模块只有三个方法，用起来也简单。</p>
+<h2 id="url结构说明">url结构说明</h2>
+<p>网址：http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash
+<img src="http://hexo-1252491761.file.myqcloud.com/url%E6%A8%A1%E5%9D%97/QQ%E5%9B%BE%E7%89%8720180301164245.png" alt="">
+从node.js 中文网拿的图。</p>
+<h2 id="urlparseurlstring-parsequerystring-slashesdenotehost">url.parse(urlString[, parseQueryString[, slashesDenoteHost]])</h2>
+<pre><code>let url = require('url');
+
+console.log(url.parse('http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top'))
+</code></pre><p>把url字符串解析成url对象。输出:</p>
+<pre><code>{
+  protocol: 'http:',
+  slashes: true,
+  auth: 'user:pass',
+  host: 'langpz.com:80',
+  port: '80',
+  hostname: 'langpz.com',
+  hash: '#top',
+  search: '?callback=fn',
+  query: 'callback=fn',
+  pathname: '/aaa/ccc/ddd',
+  path: '/aaa/ccc/ddd?callback=fn',
+  href: 'http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top' }
+</code></pre><ul>
+<li>protocol: 请求协议。</li>
+<li>slashes: slashes 属性是一个 boolean，如果 协议 中的冒号后面跟着两个 ASCII 斜杠字符（/），则值为 true。</li>
+<li>auth： URL的用户名与密码部分。</li>
+<li>host: URL的主机部分包括端口号。</li>
+<li>port：主机的端口号。</li>
+<li>hostname：主机名部分。</li>
+<li>hash： 锚点部分。</li>
+<li>search： 整个查询字符串部分，包括前面的?号</li>
+<li>query: 查询字符串部分，不包括前面的?号</li>
+<li>pathname：URL 的整个路径部分。</li>
+<li>path： pathname 与 search 组成部分的串接。</li>
+<li>href： 解析后的完整的 URL 字符串，protocol 和 host 都会被转换为小写的。</li>
+</ul>
+<p>第二个参数是布尔值，如果是 true，query值是一个对象。 默认为 false。
+第三个参数是布尔值，如果是 true，则 // 之后至下一个 / 之前的字符串会被解析作为 host。 例如，//foo/bar 会被解析为 {host: &lsquo;foo&rsquo;, pathname: &lsquo;/bar&rsquo;} 而不是 {pathname: &lsquo;//foo/bar&rsquo;}。 默认为 false。</p>
+<h2 id="urlformaturlobject">url.format(urlObject)</h2>
+<pre><code>let url = require('url');
+
+console.log(url.format({
+    protocol: 'http:',
+    slashes: true,
+    auth: 'user:pass',
+    host: 'langpz.com:80',
+    port: '80',
+    hostname: 'langpz.com',
+    hash: '#top',
+    search: '?callback=fn',
+    query: 'callback=fn',
+    pathname: '/aaa/ccc/ddd',
+    path: '/aaa/ccc/ddd?callback=fn',
+    href: 'http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top'
+}));
+</code></pre><p>url.parse()的反向操作，把url对象解析成url字符串</p>
+<h2 id="urlresolvefrom-to">url.resolve(from, to)</h2>
+<pre><code>let url = require('url');
+
+console.log(url.resolve('/one/two/three','four'))  # 输出 /one/two/four
+console.log(url.resolve('http://blog.langpz.com/', 'aaa'))  # 输出  http://blog.langpz.com/aaa
+console.log(url.resolve('http://blog.langpz.com/aaa', 'bbb'))  # 输出 http://blog.langpz.com/bbb
+</code></pre><p>把最后一个/没有内容后面追加to参数，有内容则替换。</p>
+<h1 id="参考">参考</h1>
+<p><a href="http://nodejs.cn/api/url.html">http://nodejs.cn/api/url.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

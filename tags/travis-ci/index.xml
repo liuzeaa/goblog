@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>travis-ci on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/travis-ci/</link>
+    <description>Recent content in travis-ci on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 May 2018 16:30:49 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用travis-ci自动构建Hexo</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo/</link>
+      <pubDate>Tue, 15 May 2018 16:30:49 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo/</guid>
+      <description>&lt;p&gt;持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>css实现单行、多行文本溢出显示省略号 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>css实现单行、多行文本溢出显示省略号</h1>
+  <time datetime=2017-12-19T10:58:41Z class="post-date">Tue, Dec 19, 2017</time>
+  <pre><code>	white-space: nowrap;  		// 规定段落中的文本不进行换行
+	overflow: hidden; 		// 溢出隐藏
+	text-overflow: ellipsis;	// 文本溢出显示省略号
+</code></pre><p><img src="http://hexo-1252491761.file.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111057.png" alt=""></p>
+<h1 id="css实现多行文本溢出显示省略号">css实现多行文本溢出显示省略号</h1>
+<pre><code>	display: -webkit-box; 		// 设置弹性盒子模型
+	overflow : hidden;		// 溢出隐藏
+	text-overflow: ellipsis;	// 文本溢出显示省略号
+	-webkit-line-clamp: 2;		// 限制在一个块元素显示的文本的行数
+	-webkit-box-orient: vertical; 	// 属性规定框的子元素应该被水平或垂直排列。
+</code></pre><p><img src="http://hexo-1252491761.file.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111828.png" alt=""></p>
+<p>注：因为用了webkit的私有属性，建议只在移动端使用。</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/git/</link>
+    <description>Recent content in Git on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 09 Jun 2019 18:04:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git版本回退</title>
+      <link>https://liuzeaa.github.io/goblog/post/git%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/</link>
+      <pubDate>Sun, 09 Jun 2019 18:04:28 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/git%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/</guid>
+      <description>&lt;p&gt;在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git拉取远程分支到本地</title>
+      <link>https://liuzeaa.github.io/goblog/post/git%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/</link>
+      <pubDate>Thu, 25 Oct 2018 20:42:31 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/git%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/</guid>
+      <description>&lt;p&gt;经常会碰见拉取远端的分支到本地，步骤和命令经常记不住所以只好做个笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git生成SSH公钥</title>
+      <link>https://liuzeaa.github.io/goblog/post/git%E7%94%9F%E6%88%90ssh%E5%85%AC%E9%92%A5/</link>
+      <pubDate>Sat, 05 May 2018 16:40:31 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/git%E7%94%9F%E6%88%90ssh%E5%85%AC%E9%92%A5/</guid>
+      <description>&lt;p&gt;大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥的过程在所有操作系统上都差不多。 首先先确认一下是否已经有一个公钥了。SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git配置https免用户名和密码提交</title>
+      <link>https://liuzeaa.github.io/goblog/post/git%E9%85%8D%E7%BD%AEhttps%E5%85%8D%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E6%8F%90%E4%BA%A4/</link>
+      <pubDate>Wed, 03 Jan 2018 14:15:36 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/git%E9%85%8D%E7%BD%AEhttps%E5%85%8D%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E6%8F%90%E4%BA%A4/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;我们如果是通过git clone https://xxx 下载的项目每次Push的时候需要输入用户名和密码，其实Git可以通过配置实现免密码提交。
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>session on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/session/</link>
+    <description>Recent content in session on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 06 May 2018 17:32:54 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/session/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Express框架cookie和session</title>
+      <link>https://liuzeaa.github.io/goblog/post/express%E6%A1%86%E6%9E%B6cookie%E5%92%8Csession/</link>
+      <pubDate>Sun, 06 May 2018 17:32:54 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/express%E6%A1%86%E6%9E%B6cookie%E5%92%8Csession/</guid>
+      <description>&lt;p&gt;HTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

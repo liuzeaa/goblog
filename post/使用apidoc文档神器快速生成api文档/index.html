@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>使用apidoc文档神器，快速生成api文档 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>使用apidoc文档神器，快速生成api文档</h1>
+  <time datetime=2018-05-26T11:13:37Z class="post-date">Sat, May 26, 2018</time>
+  <p>写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。</p>
+<h2 id="安装">安装</h2>
+<p>第一步先安装全局模块apidoc。</p>
+<pre><code>npm install apidoc -g
+</code></pre><h2 id="修改接口的注释">修改接口的注释</h2>
+<p>找到novel-api项目routes下面的index.js文件，注释修改成如下</p>
+<pre><code>/**
+ * @api {get} /index 请求首页数据
+ * @apiVersion 1.0.0
+ * @apiName 获取首页数据
+ * @apiGroup index
+ *
+ *
+ * @apiSuccess {Number} flag 是否获取到数据 1成功 0失败
+ * @apiSuccess {Array} books 返回书籍内容
+ * @apiSuccess {String} msg  返回信息
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *    {
+ *      &quot;flag&quot;: 1,
+ *      &quot;books&quot;: [
+ *          {
+ *             &quot;_id&quot;: &quot;5816b415b06d1d32157790b1&quot;,
+ *            &quot;title&quot;: &quot;圣墟&quot;,
+ *            &quot;author&quot;: &quot;辰东&quot;,
+ *            &quot;shortIntro&quot;: &quot;在破败中崛起，在寂灭中复苏。沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……&quot;,
+ *            &quot;cover&quot;: &quot;http://statics.zhuishushenqi.com/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1228859%2F1228859_fac7917a960547eb953edf0b740cef3a.jpg%2F&quot;,
+ *            &quot;site&quot;: &quot;zhuishuvip&quot;,
+ *            &quot;majorCate&quot;: &quot;玄幻&quot;,
+ *            &quot;minorCate&quot;: &quot;东方玄幻&quot;,
+ *            &quot;allowMonthly&quot;: false,
+ *            &quot;banned&quot;: 0,
+ *            &quot;latelyFollower&quot;: 283375,
+ *            &quot;retentionRatio&quot;: &quot;73.42&quot;
+ *          }
+ *      ],
+ *      &quot;msg&quot;: &quot;OK&quot;
+ *    }
+ *
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     { &quot;flag&quot;: 0, &quot;msg&quot;: &quot;rankingId有问题&quot; }
+ */
+</code></pre><p>@api {method} path [title]
+@api 如果没有@api apidoc会忽略这段注释
+method 请求的方法
+path 路径
+title 标题</p>
+<p>@apiVersion version
+设置文档块的版本。
+version 版本号</p>
+<p>@apiName name
+定义方法文档块的名称。名称将用于生成的输出中的子导航。
+name 方法的名称</p>
+<p>@apiGroup name
+定义方法文档块属于哪个组。组将用于生成的输出中的主导航。
+name 组的名称。也用作导航标题。</p>
+<p>@apiSuccess [(group)] [{type}] field [description]
+成功返回参数。
+(group) 可选 所有参数将按这个名称分组。没有组，默认Success 200设置。
+{type} 可选 返回类型
+field 返回标识符
+description 描述</p>
+<p>@apiParamExample [{type}] [title]
+example
+参数请求示例。
+{type} 可选 响应格式
+title 示例的简称
+example 详细的例子</p>
+<p>@apiErrorExample [{type}] [title]
+example
+错误返回消息的示例，输出为预格式化代码。
+{type} 可选 响应格式
+title 示例的简称
+example 详细的例子</p>
+<h2 id="配置npm-run-doc">配置npm run doc</h2>
+<p>打开package.json文件增加doc命令配置</p>
+<pre><code>&quot;doc&quot;: &quot;apidoc -i routes/ -o public/&quot;
+</code></pre><p>routes/ 要输出API文档的文件夹。
+public/ 输出文档到public文件夹，没有回自动创建。
+执行 npm run doc
+访问 http://localhost:3000/ 就可以看到生成好的API文档了。
+<img src="http://hexo-1252491761.file.myqcloud.com/apidoc/111.png" alt=""></p>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/apidoc/apidoc">https://github.com/apidoc/apidoc</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

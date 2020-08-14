@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>yarn使用介绍 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>yarn使用介绍</h1>
+  <time datetime=2018-06-12T14:19:09Z class="post-date">Tue, Jun 12, 2018</time>
+  <p>Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快一些，而且还更稳定，而且和npm使用相同的软件包流程也一样，下面只介绍一些常用的方法。尽快从npm上手yarn。</p>
+<h2 id="安装">安装</h2>
+<pre><code>npm install -g yarn
+</code></pre><h2 id="初始化新项目">初始化新项目</h2>
+<pre><code>yarn init
+</code></pre><p>等同于 npm init， -y参数也是一样。</p>
+<h2 id="添加依赖包">添加依赖包</h2>
+<p>安装全局包需要先执行yarn global bin 然后把获取到的路径添加到环境变量path里面，感觉很麻烦也可以用 npm i -g 安装</p>
+<pre><code>yarn global add create-react-app  // 全局安装等同于 npm i -g create-react-app
+</code></pre><p>安装包信息将加入到dependencies（生产阶段的依赖）</p>
+<pre><code>yarn add forever   // 等同于 npm install forever -S 
+yarn add forever@2.0.0 // 安装2.0.0版本
+</code></pre><p>将依赖项添加到不同依赖项类别
+分别添加到 devDependencies、peerDependencies 和 optionalDependencies</p>
+<pre><code>yarn add express --dev  // 等同于 npm install forever -D 
+yarn add express --peer
+yarn add express --optional
+</code></pre><p>peerDependencies “同伴依赖”，一种特殊的依赖，在发布包的时候需要。
+有这种依赖意味着安装包的用户也需要和包同样的依赖。 这对于像 react 这样也被人安装的、需要单一 react-dom 副本的包很有用。
+optionalDependencies 这是可选依赖，意味着依赖是……可选的。这种依赖即便安装失败，Yarn也会认为整个依赖安装过程是成功的。</p>
+<h2 id="升级包">升级包</h2>
+<pre><code>yarn upgrade express  // 等同于 npm update express
+yarn global upgrade express // 等同于 npm update npm update express -g
+</code></pre><h2 id="删除包">删除包</h2>
+<pre><code>yarn remove express // 等同于 npm uninstall express
+yarn global remove express // 等同于 npm uninstall -g express
+</code></pre><h2 id="安装项目的全部依赖">安装项目的全部依赖</h2>
+<pre><code>yarn or yarn install  // 等同于 npm install
+</code></pre><h2 id="查看包安装信息">查看包安装信息</h2>
+<pre><code>yarn list  // 等同于 npm list
+yarn global list  // npm list -g
+</code></pre><p>上面就是比较常用的方法了，可以快速从npm切换到yarn上，更多方法可以去官网查看。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://yarnpkg.com/zh-Hans/">https://yarnpkg.com/zh-Hans/</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

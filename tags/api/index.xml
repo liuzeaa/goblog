@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/api/</link>
+    <description>Recent content in API on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 29 May 2018 11:00:08 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>部署小说api服务到腾讯云</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/</link>
+      <pubDate>Tue, 29 May 2018 11:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/</guid>
+      <description>&lt;p&gt;小说api1.0版本写完了，接下来就开始部署到服务器上，用到了nginx、pm2、nvm、git、OpenSSL。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用apidoc文档神器，快速生成api文档</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8apidoc%E6%96%87%E6%A1%A3%E7%A5%9E%E5%99%A8%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90api%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sat, 26 May 2018 11:13:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8apidoc%E6%96%87%E6%A1%A3%E7%A5%9E%E5%99%A8%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90api%E6%96%87%E6%A1%A3/</guid>
+      <description>&lt;p&gt;写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0（三）</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A11-0%E4%B8%89/</link>
+      <pubDate>Sat, 26 May 2018 10:54:41 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A11-0%E4%B8%89/</guid>
+      <description>&lt;p&gt;之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0(二)</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1-%E4%BA%8C/</link>
+      <pubDate>Fri, 18 May 2018 13:26:05 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1-%E4%BA%8C/</guid>
+      <description>&lt;p&gt;之前完成了首页和搜索的接口，现在就开始写剩下的接口。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0（一）</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Thu, 17 May 2018 15:10:56 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;p&gt;1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。
+目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

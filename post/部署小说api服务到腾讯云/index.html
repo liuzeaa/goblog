@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>部署小说api服务到腾讯云 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>部署小说api服务到腾讯云</h1>
+  <time datetime=2018-05-29T11:00:08Z class="post-date">Tue, May 29, 2018</time>
+  <p>小说api1.0版本写完了，接下来就开始部署到服务器上，用到了nginx、pm2、nvm、git、OpenSSL。</p>
+<p>服务器配置: CentOS 7.4 64位 1 核 2 GB 1 Mbps
+node版本: 8.9.0
+nvm版本: 0.33.11
+npm版本： 5.5.1
+nginx版本：1.12.2
+git版本: 2.9.5</p>
+<h2 id="第一步添加pm2配置文件">第一步添加pm2配置文件</h2>
+<p>在小说api项目的根目录创建一个pm2.json的文件。</p>
+<pre><code>{
+    &quot;name&quot;: &quot;novel-api&quot;,  // 服务名
+    &quot;script&quot;: &quot;./bin/www&quot;, // 启动脚本
+    &quot;cwd&quot;: &quot;./&quot;,   // 当前工作路径
+    &quot;watch&quot;: [  // 监控变化的目录，一旦变化，自动重启
+        &quot;bin&quot;,
+        &quot;routers&quot;
+    ],
+    &quot;ignore_watch&quot;: [  // 从监控目录中排除
+        &quot;node_modules&quot;,
+        &quot;logs&quot;,
+        &quot;public&quot;,
+        &quot;log&quot;
+    ],
+    &quot;watch_options&quot;: {
+        &quot;followSymlinks&quot;: false
+    },
+    &quot;max_memory_restart&quot;: &quot;1G&quot;, // 根据内存限制重新启动应用程序。
+    &quot;error_file&quot;: &quot;./logs/novel-apierr.log&quot;,  // 错误日志路径
+    &quot;out_file&quot;: &quot;./logs/novel-api-out.log&quot;,   // 普通日志路径
+    &quot;env&quot;: {
+        &quot;DEBUG&quot;: &quot;novel-api&quot;,  // 环境变量参数，debug名字为novel-api，8080端口监听
+        &quot;PORT&quot;: &quot;8080&quot;
+    }
+}
+</code></pre><p>package.json文件添加npm run deploy部署命令。</p>
+<pre><code>&quot;deploy&quot;: &quot;pm2 start pm2.json&quot;
+</code></pre><p>pm2 常用命令。
+pm2 save  保存当前进程列表。
+pm2 resurrect  启动之前保存的进程列表。
+pm2 restart app.js|app_name 重启进程
+pm2 start app.js  启动进程
+pm2 list 查看进程列表
+pm2 stop app_name |app_id 停止指定的应用。 all 停止所有应用</p>
+<h2 id="第二步购买服务器和域名">第二步购买服务器和域名</h2>
+<p>购买服务器<a href="https://buy.cloud.tencent.com/cvm?tab=lite">https://buy.cloud.tencent.com/cvm?tab=lite</a>，我买的是CentOS 7.4 64位 1 核 2 GB 1 Mbps的服务器。如果只是尝试部署流程，可以选择按时计费。
+购买域名<a href="https://dnspod.cloud.tencent.com/?from=qcloudProductDns">https://dnspod.cloud.tencent.com/?from=qcloudProductDns</a>建议选.com的域名。</p>
+<h2 id="第三步设置子域名">第三步设置子域名</h2>
+<p>添加一个api开头的子域名<a href="https://console.cloud.tencent.com/domain">https://console.cloud.tencent.com/domain</a>，然后添加解析。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529113617.png" alt=""></p>
+<h2 id="第四步登陆服务器安装软件">第四步登陆服务器安装软件</h2>
+<p>登陆到服务器然后执行以下安装命令。</p>
+<h3 id="安装nginx">安装nginx</h3>
+<pre><code>yum install -y nginx
+nginx -v
+</code></pre><h3 id="安装nvm">安装nvm</h3>
+<pre><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm --version
+</code></pre><h3 id="安装node和pm2apidoc">安装node和pm2、apidoc</h3>
+<pre><code>nvm install 8.9.0
+nvm use 8.9.0
+node -v
+npm -v
+npm install -g pm2 apidoc
+</code></pre><h3 id="安装git">安装git</h3>
+<pre><code>yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel tar
+yum install -y gcc-c++ perl-ExtUtils-MakeMaker
+cd /usr/src
+wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
+tar xf git-2.9.5.tar.gz
+cd git-2.9.5
+make configure
+make profix=/usr/git
+make install
+echo &quot;export PATH=$PATH:/usr/git/bin&quot; &gt;&gt; /etc/profile
+source /etc/profile
+git --version 
+// 配置git
+git config --global user.name &quot;用户名称&quot;
+git config --global user.email 电子邮件地址
+</code></pre><h2 id="在服务器上克隆git仓库">在服务器上克隆git仓库</h2>
+<p>先进入home路径创建wwwroot文件夹。</p>
+<pre><code>cd /home &amp;&amp; mkdir wwwroot
+cd wwwroot
+git clone https://github.com/lanpangzhi/novel-api.git
+cd novel-api
+npm install
+npm run doc
+npm run deploy
+</code></pre><p>这个应用就pm2被启动了。</p>
+<h2 id="配置nginx">配置nginx</h2>
+<p>先启动nginx。</p>
+<pre><code>nginx
+</code></pre><p>http://123.206.45.87 在浏览器输入服务器ip就可以看到nginx已经启动了。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529134733.png" alt="">
+进入nginx配置目录，新建文件。</p>
+<pre><code>cd /etc/nginx/conf.d
+touch api.langpz.com-8080.conf
+</code></pre><p>如果一台服务器的server比较多，建议用域名和端口做配置文件名。
+编辑api.langpz.com-8080.conf 配置文件。</p>
+<pre><code>vi api.langpz.com-8080.conf
+</code></pre><p>把下面代码复制粘贴过去。</p>
+<pre><code>upstream novel-api {
+    server 127.0.0.1:8080;
+}
+
+server {
+    listen 80;
+    server_name 你自己的域名;
+    location / {
+        proxy_pass http://novel-api;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_set_header   Host             $http_host;
+        proxy_set_header   X-NginX-Proxy    true;
+        proxy_redirect     off;
+    }
+}
+</code></pre><p>ctrl + c 输入:wq  退出并保存。再执行nginx -s reload 在浏览器输入你的域名就可以看到文档，<a href="http://api.langpz.com">http://api.langpz.com</a></p>
+<h3 id="gzip压缩">gzip压缩</h3>
+<pre><code>cd /etc/nginx/
+vi nginx.conf
+</code></pre><p>把下面代码复制粘贴过去。</p>
+<pre><code>## gzip压缩
+gzip on;
+# ie6不启用gzip
+gzip_disable &quot;msie6&quot;;
+gzip_vary on;
+gzip_proxied any;
+# 压缩等级 1-9
+gzip_comp_level 2;
+gzip_buffers 16 8k;
+gzip_http_version 1.1;
+# 为除“text/html”之外的MIME类型启用压缩
+gzip_types text/plain text/css application/json application/x-javascript image/gif image/jpeg image/png image/tiff image/x-icon application/font-woff application/vnd.ms-fontobject text/javascript;
+</code></pre><p>ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。可以去站长之家看你的压缩率<a href="http://tool.chinaz.com/gzips/">http://tool.chinaz.com/gzips/</a>
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140415.png" alt=""></p>
+<h3 id="隐藏nginx版本号">隐藏nginx版本号</h3>
+<p>还是修改nginx.conf这个文件</p>
+<pre><code>vi nginx.conf
+
+// 把下面代码复制过去
+# 隐藏nginx版本号
+server_tokens off;
+</code></pre><p>ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140928.png" alt="">
+这里就不显示nginx版本号了。</p>
+<h3 id="配置ssl证书https给你的网站加个小绿锁">配置ssl证书https，给你的网站加个小绿锁</h3>
+<p>我用的是腾讯云的免费证书，也可以自己生成。<a href="https://cloud.tencent.com/product/ssl?from=qcloudHpHeaderSsl">https://cloud.tencent.com/product/ssl?from=qcloudHpHeaderSsl</a>，使用域名免费版。</p>
+<h4 id="申请腾讯云ssl证书">申请腾讯云ssl证书</h4>
+<p><img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529141439.png" alt="">
+直接点下一步，然后用推荐选项验证。申请很快不到十分钟就下来，到时候还会有邮件和短信通知。</p>
+<h4 id="下载证书上传到服务器">下载证书上传到服务器</h4>
+<p>找到腾讯云的ssl证书管理去下载证书。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529142105.png" alt="">
+压缩包里面有三个文件夹找到Nginx这个文件夹。
+在服务器进入nginx所在目录新建一个文件夹。</p>
+<pre><code>cd /etc/nginx/
+mkdir api.langpz.com
+</code></pre><p>然后把Nginx文件夹里面两个文件上传到服务器/etc/nginx/api.langpz.com 这个文件夹里面。
+可以下载一个FileZilla软件或者下载一个别的ftp工具，还可以用命令行，我这里下载了FileZilla使用它去上传。</p>
+<h4 id="加强-https-安全性">加强 HTTPS 安全性</h4>
+<p>首先在目录 /etc/nginx/api.langpz.com 运行以下代码生成 dhparam.pem 文件</p>
+<pre><code>cd /etc/nginx/api.langpz.com	
+openssl dhparam -out dhparam.pem 2048
+</code></pre><h4 id="修改配置文件">修改配置文件</h4>
+<pre><code>cd /etc/nginx/conf.d
+touch api.langpz.com-8080.conf
+</code></pre><p>把下面代码覆盖api.langpz.com-8080.conf文件。</p>
+<pre><code>upstream novel-api {
+    server 127.0.0.1:8080;
+}
+
+# 配置共享会话缓存大小
+ssl_session_cache shared:SSL:10m;
+# 配置会话超时时间
+ssl_session_timeout 10m;
+
+# 强制跳转https
+server {
+    listen 80;
+    server_name api.langpz.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+ listen 443 ssl;
+ server_name api.langpz.com;
+
+ # 证书文件
+ ssl_certificate      /etc/nginx/api.langpz.com/1_api.langpz.com_bundle.crt;
+ # 私钥文件
+ ssl_certificate_key  /etc/nginx/api.langpz.com/2_api.langpz.com.key;
+ # 设置长连接
+ keepalive_timeout    70;
+ # 优先采取服务器算法
+ ssl_prefer_server_ciphers on;
+ # 使用DH文件
+ ssl_dhparam /etc/nginx/api.langpz.com/dhparam.pem;
+ ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ # 定义算法
+ ssl_ciphers &quot;EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4&quot;;
+ # HSTS策略
+ add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains;preload&quot; always;
+ # 防XSS攻擊
+ add_header X-Xss-Protection 1;
+ # 禁止服务器自动解析资源类型
+ add_header X-Content-Type-Options nosniff;
+
+ 
+ location / {
+    proxy_pass http://novel-api;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    proxy_set_header   Host             $http_host;
+    proxy_set_header   X-NginX-Proxy    true;
+    proxy_redirect     off;
+ }
+}
+</code></pre><p>ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。
+现在就可以访问<a href="https://api.langpz.com">https://api.langpz.com</a>。如果访问http协议就会强制跳转到https协议。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143306.png" alt=""></p>
+<h2 id="ssl安全测试">SSL安全测试</h2>
+<p><a href="https://www.ssllabs.com/ssltest/index.html"></a>
+输入你的域名。
+之前在nginx配置加强 HTTPS 安全性，所以结果是A+。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143835.png" alt=""></p>
+<h2 id="总结">总结</h2>
+<p>这种部署比较麻烦，部署完发现pm2也有部署功能，2.0用koa.js重构的时候用pm2部署，docker 生成镜像。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://nginx.org/en/docs/">https://nginx.org/en/docs/</a>
+<a href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>
+<a href="https://www.thinkjs.org/zh-cn/doc/3.0/deploy.html">https://www.thinkjs.org/zh-cn/doc/3.0/deploy.html</a>
+<a href="https://www.cnblogs.com/chyingp/p/pm2-documentation.html">https://www.cnblogs.com/chyingp/p/pm2-documentation.html</a>
+<a href="http://www.runoob.com/git/git-install-setup.html">http://www.runoob.com/git/git-install-setup.html</a>
+<a href="https://nginx.rails365.net/chapters/install.html">https://nginx.rails365.net/chapters/install.html</a>
+<a href="https://www.cnblogs.com/nuccch/p/7681592.html">https://www.cnblogs.com/nuccch/p/7681592.html</a>
+<a href="https://aotu.io/notes/2016/08/16/nginx-https/index.html">https://aotu.io/notes/2016/08/16/nginx-https/index.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

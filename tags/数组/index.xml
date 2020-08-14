@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数组 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E7%BB%84/</link>
+    <description>Recent content in 数组 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 02 May 2018 16:49:44 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>javascript数组去重(ES6版)</title>
+      <link>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-es6%E7%89%88/</link>
+      <pubDate>Wed, 02 May 2018 16:49:44 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-es6%E7%89%88/</guid>
+      <description>&lt;p&gt;之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。
+今天就利用 Set 来去重。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript数组去重</title>
+      <link>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</link>
+      <pubDate>Tue, 02 Jan 2018 10:25:35 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</guid>
+      <description>&lt;p&gt;原理：在数组原型上扩展方法，遍历当前数组把数组的每一项存在json对象里面，如果json存在当前遍历的值就代表重复了，否则把当前遍历的值添加到一个新的数组，最后返回新的数组。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

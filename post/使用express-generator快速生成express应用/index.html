@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>使用express-generator快速生成express应用 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>使用express-generator快速生成express应用</h1>
+  <time datetime=2018-05-14T16:08:03Z class="post-date">Mon, May 14, 2018</time>
+  <p>express-generator是Express应用的快速生成器，可以随意使用此结构或者对其进行修改以最大程度满足自己的需求。</p>
+<h2 id="安装">安装</h2>
+<pre><code>npm install -g express-generator
+</code></pre><p>需要全局安装。</p>
+<h2 id="使用">使用</h2>
+<p>在要创建应用的文件夹下面执。</p>
+<pre><code>express -e myapp
+</code></pre><p>-e： 使用ejs模板
+myapp： 应用名字</p>
+<p>然后安装依赖项：</p>
+<pre><code>cd myapp
+npm install
+</code></pre><p>执行应用</p>
+<pre><code>set DEBUG=myapp:* &amp; npm start  
+</code></pre><p>生成完应用的时候会有提示因为我是Windows系统所以提示set。
+MacOS 或 Linux 上不用使用set</p>
+<pre><code>DEBUG=myapp:* npm start
+</code></pre><p>然后在浏览器中输入 http://localhost:3000/ 以访问此应用程序。
+可以根据自己的需要修改文件，来满足自己项目的需要。</p>
+<h2 id="更多参数">更多参数</h2>
+<pre><code>    --version        输出版本号
+-e, --ejs            添加ejs引擎支持
+    --pug            添加pug引擎支持
+    --hbs            添加handlebars引擎支持
+-H, --hogan          添加hogan.js引擎支持
+-v, --view &lt;engine&gt;  添加以下模板引擎支持(dust|ejs|hbs|hjs|jade|pug|twig|vash) 默认jade  
+    --no-view        使用静态HTML代替视图模板引擎
+-c, --css &lt;engine&gt;   添加样式扩展语言 (less|stylus|compass|sass) 默认css  
+    --git            添加 .gitignore 忽略文件
+-h, --help           输出帮助信息
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="https://github.com/expressjs/generator">https://github.com/expressjs/generator</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

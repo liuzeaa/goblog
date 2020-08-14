@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>发布一个自己的NPM包 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>发布一个自己的NPM包</h1>
+  <time datetime=2019-04-18T20:01:57Z class="post-date">Thu, Apr 18, 2019</time>
+  <p>用了这么多次别人发布的包，今天咱们自己发布一个npm包</p>
+<h2 id="首先检查npm源">首先检查npm源</h2>
+<pre><code>npm get registry
+# 如果不是这个地址https://registry.npmjs.org  需要设置官网源
+npm config set registry https://registry.npmjs.org
+</code></pre><p>如果是使用第三方源请设置npm官方源 <code>(注)：第三方源只提供下载功能</code></p>
+<h2 id="创建模块">创建模块</h2>
+<pre><code>npm init 
+
+# package.json 内容
+{
+  &quot;name&quot;: &quot;isnumber-lpz&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Number\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[Cis\u001b[C\u001b[C\u001b[Number&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;git+https://github.com/lanpangzhi/isNumber-lpz.git&quot;
+  },
+  &quot;author&quot;: &quot;lanpangzhi&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/lanpangzhi/isNumber-lpz/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/lanpangzhi/isNumber-lpz#readme&quot;
+}
+
+# 创建 index.js
+touch index.js
+
+function isNumber(number) {
+  number = parseFloat(number)
+  return number === number &amp;&amp; typeof number === 'number' 
+}
+
+module.exports = isNumber
+</code></pre><p><a href="http://blog.langpz.com/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html">npm使用介绍</a>里面有里面的字段，这里就省略了，<code>(注)：包的name不要重名建议先去[https://www.npmjs.com/](https://www.npmjs.com/)搜索下</code></p>
+<h2 id="注册npm账号有账号跳过这步">注册npm账号（有账号跳过这步）</h2>
+<p>npm adduser用于在npmjs.com注册一个用户。</p>
+<pre><code>npm adduser
+# Username: 用户名
+# Password: 密码
+# Email: 邮箱
+
+# 登录
+npm login
+</code></pre><h2 id="发布包">发布包</h2>
+<pre><code>npm publish
+</code></pre><p><code>(注)：发布的时候版本号要和上次的不一样，默认的发布标签是latest、前模块是一个beta版，比如2.1.1-beta，那么发布的时候需要使用tag参数</code></p>
+<h2 id="安装并使用">安装并使用</h2>
+<pre><code>npm i isnumber-lpz
+
+const isNumber = require('isnumber-lpz')
+
+console.log('12', isNumber(12))   true
+console.log('12.2', isNumber(12.2))    true
+console.log('x12.2', isNumber('x12.2'))   false
+console.log('xacsa', isNumber('xacsa'))   false
+</code></pre><h2 id="demo-地址">demo 地址</h2>
+<p><a href="https://github.com/lanpangzhi/isNumber-lpz">https://github.com/lanpangzhi/isNumber-lpz</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

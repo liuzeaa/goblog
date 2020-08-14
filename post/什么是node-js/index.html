@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>什么是Node.js &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>什么是Node.js</h1>
+  <time datetime=2018-01-08T13:29:21Z class="post-date">Mon, Jan 8, 2018</time>
+  <p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。
+它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。
+Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。</p>
+<!-- raw HTML omitted -->
+<h2 id="io">I/O</h2>
+<p>输入(Input)： 从系统写入文件
+输出(Output)： 从系统读取文件</p>
+<h2 id="同步和异步">同步和异步</h2>
+<p>同步是指发起一个调用之后主线程挂起，调用者主动等待调用返回结果。
+异步是指发起一个调用之后主线程还可以发起别的调用，被调用者通知调用者返回结果。</p>
+<h2 id="阻塞式和非阻塞式">阻塞式和非阻塞式</h2>
+<p>非阻塞式是指发起一个调用不会阻塞主线程的执行，非阻塞式是实现异步的前提。
+阻塞式是指发起一个调用主线程是被挂起，调用完成后才可以执行其他操作。</p>
+<h2 id="单线程和多线程">单线程和多线程</h2>
+<p>单线程是指程序按顺序执行,前面的程序执行完后面才程序可以执行。
+多线程是指同时执行多个程序，当前程序执行不影响其他程序执行。</p>
+<h2 id="事件驱动">事件驱动</h2>
+<p>这种模型的程序运行流程是由用户的动作（如鼠标的按键，键盘的按键动作）或者是由其他程序的消息来决定的。</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

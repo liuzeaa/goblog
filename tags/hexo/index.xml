@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/hexo/</link>
+    <description>Recent content in Hexo on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 30 Mar 2019 17:34:07 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hexo博客从Coding迁移到腾讯云COS</title>
+      <link>https://liuzeaa.github.io/goblog/post/hexo%E5%8D%9A%E5%AE%A2%E4%BB%8Ecoding%E8%BF%81%E7%A7%BB%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91cos/</link>
+      <pubDate>Sat, 30 Mar 2019 17:34:07 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/hexo%E5%8D%9A%E5%AE%A2%E4%BB%8Ecoding%E8%BF%81%E7%A7%BB%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91cos/</guid>
+      <description>最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages 不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。
+创建存储桶 https://console.cloud.tencent.com/cos5/bucket 首先要创建存储桶。区域看各自情况任选，访问权限必须要选择公有读私有写。 在基础设置开启静态网站 索引文档一定要填index.html，错误文档就看自定义的是什么文件了。
+在域名管理开启自定义加速域名（CDN加速） 填写上自己的域名就可以了。
+域名解析 在域名解析这里添加上刚才配置的自定义加速域名的CNAME地址。 安装发布COS插件 npm install hexo-deployer-cos-enhanced-dev --save 配置_config.yml 把之前deploy的配置替换掉
+deploy: type: cos bucket: blog-1251123456 region: ap-shanghai secretId: AKIDIgxxxxxxxxxxxxxxxxxxxx0SepjX secretKey: qXPCbxxxxxxxxxxxxxxxxxxxxsJZfdR cdnConfig: enable: true cdnUrl: http://yourCdnSite.com bucket: static-1251123456 region: ap-shanghai folder: static-1251123456 secretId: AKIDIgxxxxxxxxxxxxxxxxxxxx0SepjX secretKey: qXPCbxxxxxxxxxxxxxxxxxxxxsJZfdR secretId secretKey 包括cdnConfig下面这两个字段都可以不用填写， 直接从环境变量取
+type： 是固定死的，只能是 cos。
+cdnUrl： 是你的对象存储绑定的CDN域名，没有启用 CDN的话，推荐使用 https://github.com/sdlzhd/hexo-deployer-cos
+bucket 和 region： 在腾讯云的对象存储中，新建或找到你的 bucket，然后找到 默认域名 信息，会看到一个类似这样的域名: blog-1251123456.cos.ap-shanghai.myqcloud.com，第一个点前面的 blog-1251123456 就是 bucket 名称，第二个点和第三个点之间的 ap-shanghai，就是你的 COS 所在地域，填写到 region 中。</description>
+    </item>
+    
+    <item>
+      <title>使用travis-ci自动构建Hexo</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo/</link>
+      <pubDate>Tue, 15 May 2018 16:30:49 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo/</guid>
+      <description>&lt;p&gt;持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo博客多端同步问题</title>
+      <link>https://liuzeaa.github.io/goblog/post/hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 29 Dec 2017 16:38:22 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解决同步问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo&#43;Next集成Algolia搜索</title>
+      <link>https://liuzeaa.github.io/goblog/post/hexo-next%E9%9B%86%E6%88%90algolia%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Fri, 22 Dec 2017 13:13:18 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/hexo-next%E9%9B%86%E6%88%90algolia%E6%90%9C%E7%B4%A2/</guid>
+      <description>起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。 注：Algolia搜索在版本** 5.1.0 **中引入，要使用此功能请确保所使用的 NexT 版本在此之后
+首先注册Algolia账户 Algolia 登陆页面https://www.algolia.com/users/sign_in，可以使用 GitHub 或者 Google 账户直接登录，也可以注册一个新账户。我直接用谷歌账户登陆了，注册后的 14 天内拥有所有功能（包括收费类别的）。之后若未续费会自动降级为免费账户，免费账户 总共有 10,000 条记录，每月有 100,000 的可以操作数。
+注册完成后，创建一个新的 Index，这个 index name 之后会用到 Index 创建完成后，此时这个 Index 里未包含任何数据。 接下来需要安装 Hexo Algolia 扩展， 这个扩展的功能是搜集站点的内容并通过 API 发送给 Algolia。前往站点根目录，执行命令安装：
+npm install hexo-algolia --save # 目前最新版本是1.2.4，下面的操作都是基于这个版本的文档 获取 Key，更新站点根目录配置 前往站点根目录打开_config.yml添加以下代码
+# Algolia Search API Key algolia: applicationID: &#39;你的Application ID&#39; apiKey: &#39;你的Search-Only API Key&#39; indexName: &#39;输入刚才创建index name&#39; 修改Algolia搜索ACL（访问控制列表） 选中后保存。
+操作完成后执行命令  export(windows 为 set) (Powershell 用 $env:) HEXO_ALGOLIA_INDEXING_KEY=你的Search-Only API key set (Mac和git bash 为 export) (Powershell 用 $env:) HEXO_ALGOLIA_INDEXING_KEY #查看是否设置成功如果没有值就设置失败 hexo algolia 成功后修改Next主题配置文件 更改Next主题配置文件，找到 Algolia Search 配置部分：</description>
+    </item>
+    
+  </channel>
+</rss>

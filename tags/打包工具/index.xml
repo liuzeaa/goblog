@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>打包工具 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 打包工具 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 13 Jun 2018 13:30:47 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>webpack4.0入门指南（二）转换es7语法解析静态资源</title>
+      <link>https://liuzeaa.github.io/goblog/post/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E4%BA%8C%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Wed, 13 Jun 2018 13:30:47 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E4%BA%8C%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</guid>
+      <description>&lt;p&gt;之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就写一下配置。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>webpack4.0入门指南（一）安装和转换es6语法</title>
+      <link>https://liuzeaa.github.io/goblog/post/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Fri, 08 Jun 2018 10:35:24 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;p&gt;webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 webpack v4.0.0 开始，可以不用引入一个配置文件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

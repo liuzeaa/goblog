@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Windows下安装MongoDB &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Windows下安装MongoDB</h1>
+  <time datetime=2018-05-08T15:30:32Z class="post-date">Tue, May 8, 2018</time>
+  <p>MongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。</p>
+<h2 id="mongodb特点">MongoDB特点</h2>
+<p>和关系型数据库比较，面向文档的数据库不再有“行”（row）的概念，取而代之的是更为灵活的“文档”（document）模型。通过再文档中嵌入文档和数组，面向文档的方法能够仅使用一条记录来表现复杂的层次关系。
+另外，不再有预定义模式，文档的键（key）和值（value）不再是固定的类型和大小。由于没有固定的模式，根据需要添加或删除字段变得更容易。可以进行快速迭代，所以开发进程得到加快。</p>
+<h2 id="mongodb基本概念">MongoDB基本概念</h2>
+<p>文档是MongoDB中数据的基本单元，非常类似于关系型数据库管理系统中的行。
+集合(collection)可以看作是一个拥有动态模式(dynamic schema)的表。
+MongoDB的一个实例可以拥有多个相互独立的数据库(database)，每一个数据库都拥有自己的集合。
+每一个文档都有一个特殊的键“_id”，这个键在文档所属的集合中是唯一的。</p>
+<h2 id="下载和安装">下载和安装</h2>
+<p><a href="https://www.mongodb.com/download-center#atlas">下载地址</a>
+<img src="http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png" alt="">
+点击下载，下载完安装，用默认设置。</p>
+<h2 id="运行mongodb">运行MongoDB</h2>
+<p>命令提示符（cmd）执行，具体路径需要看安装的版本，我的是3.6版本。</p>
+<pre><code>cd C:\Program Files\MongoDB\Server\3.6\bin
+mongod --dbpath d:\db 
+</code></pre><p>控制台会输出一些东西，没有报错MongoDB就启动了。
+这样启动比较麻烦，每次都要启动，所以可以把它注册成windows 的服务</p>
+<pre><code>// 使用管理员权限运行
+mongod --install --dbpath d:\data\db --logpath d:\data\log\log.txt
+net start MongoDB  // 启动服务
+</code></pre><pre><code>services.msc // 查看服务
+net stop mongodb   // 停止服务
+</code></pre><p>删除服务</p>
+<pre><code>mongod --remove --serviceName MongoDB  // MongoDB是服务名
+</code></pre><p>MongoDB 还可以通过配置文件启动
+可以去官网查看<a href="https://docs.mongodb.com/manual/reference/configuration-options/">https://docs.mongodb.com/manual/reference/configuration-options/</a></p>
+<h2 id="连接mongodb">连接MongoDB</h2>
+<p>在打开一个命令提示符（cmd）之前运行的MongoDB那个不要关闭，因为没有注册成windows的服务，关闭就找不到数据库了。</p>
+<pre><code>cd C:\Program Files\MongoDB\Server\3.6\bin
+mongo
+</code></pre><p>这样就链接上数据库了，当然还会输出一大堆东西。</p>
+<h2 id="操作mongodb">操作MongoDB</h2>
+<p>我们先创建一个数据库，再刚才连接MongoDB的cmd执行</p>
+<pre><code>use test02
+</code></pre><p>创建一个test02的数据库并切换过去。
+db变量指向当前数据库。
+向集合里插入文档，之前也讲了MongoDB没有预定义模式，所以不用新建表和表结构了。
+insert方法 把一条文档保存到集合里。</p>
+<pre><code>db.user_table.insert({&quot;name&quot;, &quot;lanpangzhi&quot;, &quot;age&quot;: 18})
+</code></pre><p>查看集合里面的文档。
+find和findOne方法可以用于查询集合里的文档。只想查看一个文件，可以用findOne</p>
+<pre><code>db.user_table.find()
+db.user_table.findOne()
+</code></pre><p>find和findOne还可以接受一个查询文档作为限定条件。</p>
+<pre><code>db.user_table.find({&quot;name&quot;: &quot;lanpangzhi&quot;})
+</code></pre><p>更新集合里面的文档
+update方法接受（至少）两个参数：第一个是限定条件（用于匹配待更新的文档），第二个是新的文档。</p>
+<pre><code>db.user_table.update({name: lanpangzhi},{&quot;name&quot;: &quot;lanpangzhi&quot;, &quot;age&quot;: 18, &quot;sex&quot;: 1});
+</code></pre><p>删除集合里面的文档
+remove方法可将数据库的集合永久删除，如果不加参数默认把集合里面所有的文档删除。它可以接受一个限定条件的文档作为参数。</p>
+<pre><code>db.user_table.remove({&quot;name&quot;: &quot;aaa&quot;})
+</code></pre>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

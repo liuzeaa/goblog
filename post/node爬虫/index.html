@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>node爬虫 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>node爬虫</h1>
+  <time datetime=2018-05-12T15:37:42Z class="post-date">Sat, May 12, 2018</time>
+  <p>什么是爬虫呢，是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。为什么选用node呢，因为我是前端，当然要用js实现。</p>
+<h2 id="项目分析">项目分析</h2>
+<p>爬取http://top.zhaopin.com  智联网站上的全国的竞争最激烈三个月内前十的岗位。不需要定时爬取。使用request和cheerio模块。node版本7.6.0、npm版本4.1.2</p>
+<h2 id="安装">安装</h2>
+<pre><code>npm install request cheerio -S
+</code></pre><p>request 模块是一个简化的HTTP客户端。
+cheerio 模块专为服务器设计的核心jQuery的快速，灵活和精益的实现。可以把爬到的内容和jQuery一样使用。</p>
+<h2 id="核心代码">核心代码</h2>
+<pre><code>// app.js
+const request = require('request');
+const cheerio = require('cheerio');
+
+// 发起请求
+request('http://top.zhaopin.com', (error, response, body) =&gt; {
+    if(error){
+        console.error(error);
+    }
+    let json = {};
+    // 获取到的内容放到cheerio模块
+    const $ = cheerio.load(body);
+
+    // jQuery 遍历  #hotJobTop .topList li  是通过http://top.zhaopin.com 分析页面结构得到的
+    $('#hotJobTop .topList li').each(function (index) {
+        let obj = json[index] = {};
+        obj.name = $(this).find('.title').text().trim();
+        obj.num = $(this).find('.paddingR10').text().trim();
+    });
+
+    // 打印数据
+    console.log(json);
+});
+</code></pre><p>执行 node app.js 就会得到如下结果。</p>
+<pre><code>[ { name: 'Java开发工程师', num: '340538人/天' },
+  { name: '软件工程师', num: '220873人/天' },
+  { name: '销售代表', num: '175053人/天' },
+  { name: '会计/会计师', num: '168225人/天' },
+  { name: '行政专员/助理', num: '150913人/天' },
+  { name: 'WEB前端开发', num: '140979人/天' },
+  { name: '助理/秘书/文员', num: '139098人/天' },
+  { name: '软件测试', num: '136399人/天' },
+  { name: '人力资源专员/助理', num: '123482人/天' },
+  { name: '用户界面（UI）设计', num: '107505人/天' } ]
+</code></pre><p>一个简单的爬虫就写好了，看看前十有没有你从事的岗位吧！</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/request/request">https://github.com/request/request</a>
+<a href="https://github.com/cheeriojs/cheerio">https://github.com/cheeriojs/cheerio</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

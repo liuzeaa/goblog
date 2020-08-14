@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/javascript/</link>
+    <description>Recent content in javascript on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 26 Jun 2018 17:08:51 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ES6系列-let和const变量</title>
+      <link>https://liuzeaa.github.io/goblog/post/es6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Tue, 26 Jun 2018 17:08:51 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/es6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F/</guid>
+      <description>&lt;p&gt;ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript数据类型转换</title>
+      <link>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sat, 05 May 2018 17:14:25 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>&lt;p&gt;在面试中经常会碰见问类型转换的问题，例如[] == false、[] == {}返回的是真还是假等等。。。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>javascript数组去重(ES6版)</title>
+      <link>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-es6%E7%89%88/</link>
+      <pubDate>Wed, 02 May 2018 16:49:44 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-es6%E7%89%88/</guid>
+      <description>&lt;p&gt;之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。
+今天就利用 Set 来去重。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

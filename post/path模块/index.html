@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>path模块 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>path模块</h1>
+  <time datetime=2018-02-26T11:17:42Z class="post-date">Mon, Feb 26, 2018</time>
+  <p>path模块是Node.js提供用于处理文件与目录的路径。</p>
+<h2 id="连接路径">连接路径</h2>
+<pre><code>let path = require('path');
+
+console.log(path.join(__dirname,'lan','pang','zi')) # 输出c:\Users\windows\Desktop\新建文件夹\lan\pang\zi
+</code></pre><p>为什么要使用这个方法，因为Windows和liunx系统路径分隔符不一样，liunx系统是&rdquo;/&quot;，Windows系统是&rdquo;&quot;，path.join()会正确使用当前系统的路径分隔符。</p>
+<h2 id="获取路径扩展名">获取路径扩展名</h2>
+<pre><code>let path = require('path');
+
+console.log(path.extname(__filename)) # 输出 .js
+</code></pre><p>从 path 的最后一部分中的最后一个 . 字符到字符串结束。 如果 path 的最后一部分没有 . 或 path 的文件名的第一个字符是 .，则返回一个空字符串。</p>
+<pre><code>console.log(path.extname('.lanpangzhi')) # 输出空字符串
+console.log(path.extname('lanpangzhi.github.exe')) # 输出 .exe
+console.log(path.extname('lanpangzhi.')) # 输出 .
+console.log(path.extname('lanpangzhi')) # 输出空字符串
+</code></pre><h2 id="获取绝对路径">获取绝对路径</h2>
+<pre><code>let path = require('path');
+
+console.log(path.resolve('lan/pang','zi')) # 输出 c:\Users\windows\Desktop\新建文件夹\lan\pang\zi
+</code></pre><p>路径的序列是从右往左被处理的。
+如果处理完全部给定的 path 片段后还未生成一个绝对路径，则当前工作目录会被用上。
+生成的路径是规范化后的，且末尾的斜杠会被删除，除非路径被解析为根目录。
+如果不传参数会得到当前所在的目录</p>
+<h2 id="判断是否是绝对路径">判断是否是绝对路径</h2>
+<pre><code>let path = require('path');
+
+console.log(path.isAbsolute('/lanpangzhi')) # 输出 true
+console.log(path.isAbsolute('lanpangzhi/')) # 输出 false
+</code></pre><p>如果 path 不是一个字符串，则抛出 TypeError。</p>
+<h2 id="获取路径中的文件名">获取路径中的文件名</h2>
+<pre><code>let path = require('path');
+
+console.log(path.basename(__filename)) # 输出 http.js
+console.log(path.basename(__filename,'.js')) # 输出 http
+</code></pre><p>第一个参数是路径。
+第二个参数是文件扩展名，如果加上只返回文件名。</p>
+<h2 id="pathsep-文件路径分隔符">path.sep 文件路径分隔符</h2>
+<h2 id="pathdelimiter-环境变量路径分隔符">path.delimiter 环境变量路径分隔符</h2>
+<h1 id="参考">参考</h1>
+<p><a href="http://nodejs.cn/api/path.html">http://nodejs.cn/api/path.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

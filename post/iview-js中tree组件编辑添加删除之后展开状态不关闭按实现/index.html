@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>iView.js中Tree组件编辑、添加、删除之后展开状态不关闭按实现 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>iView.js中Tree组件编辑、添加、删除之后展开状态不关闭按实现</h1>
+  <time datetime=2020-08-13T09:06:04Z class="post-date">Thu, Aug 13, 2020</time>
+  <h4 id="实际开发过程中添加编辑删除节点之后重新请求init方法之前展开的节点都会关闭这么做非常不友好我在项目中具体是通过以下方式实现的">实际开发过程中，添加、编辑、删除节点之后重新请求init方法，之前展开的节点都会关闭，这么做非常不友好，我在项目中具体是通过以下方式实现的。</h4>
+<p>data中的含有children的数据进行扁平化处理</p>
+<pre><code>flatFun(data){
+   data.forEach(v=&gt;{
+      this.flatData.push(v);
+      if(v.hasOwnProperty('children')){
+          if(v.children.length&gt;0){
+              this.flatFun(v.children)
+          }
+      }
+   })
+}
+</code></pre><p>添加、编辑、删除之后对扁平化之后的数据进行递归，Tree组件data识别的数据</p>
+<pre><code>dataFun(){
+    this.data = this.flatData.filter(v=&gt;v.pid==0);
+    this.reDataFun(this.data);
+},
+reDataFun(data){
+    data.forEach(v=&gt;{
+        if (v.parent) {
+            v.loading = false;
+            v.children = []
+        }
+        const list = this.flatData.filter(a=&gt;a.pid==v.id);
+        if(list.length&gt;0){
+            this.$set(v,'children',list);
+            this.reDataFun(list);
+        }
+    })
+}
+</code></pre><p>添加方法</p>
+<pre><code>this.flatFun([...this.data,res.result]);
+this.flatData = this.flatData.map(v=&gt;{
+    this.$delete(v,'children');
+    this.$delete(v,'loading');
+    return v
+});//扁平化之后的数据进行删除children，防止添加、编辑、删除数据为变化
+this.dataFun(this.flatData);
+this.flatData=[];//成功之后清空扁平化数据
+</code></pre><p>编辑方法</p>
+<pre><code>this.flatFun(this.data);
+this.flatData = this.flatData.map(v=&gt;{
+    this.$delete(v,'children');
+    this.$delete(v,'loading');
+    return v
+});//扁平化之后的数据进行删除children，防止添加、编辑、删除数据为变化
+const index = this.flatData.findIndex(v=&gt;v.id==res.result.id);
+this.flatData[index] = {...this.flatData[index],...res.result};
+this.dataFun(this.flatData);
+this.flatData = []//成功之后清空扁平化数据
+</code></pre><p>删除方法</p>
+<pre><code>this.flatFun(this.data);
+this.flatData = this.flatData.map(v=&gt;{
+    this.$delete(v,'children');
+    this.$delete(v,'loading');
+    return v
+});//扁平化之后的数据进行删除children，防止添加、编辑、删除数据为变化
+this.selectList.forEach(obj=&gt;{
+    this.flatData = this.flatData.filter(v=&gt;v.id!=obj.id)
+})
+this.dataFun(this.flatData);
+this.flatData = []//成功之后清空扁平化数据
+</code></pre>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

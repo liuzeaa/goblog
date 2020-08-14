@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>使用Express开发小说API接口服务1.0（一） &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>使用Express开发小说API接口服务1.0（一）</h1>
+  <time datetime=2018-05-17T15:10:56Z class="post-date">Thu, May 17, 2018</time>
+  <p>1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。
+目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。</p>
+<h2 id="github创建仓库">github创建仓库</h2>
+<p>先创建一个仓库放文件
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png" alt="">
+然后克隆创建好的仓库</p>
+<pre><code>git clone https://github.com/lanpangzhi/novel-api.git
+</code></pre><h2 id="安装-express-generator-快速生成项目">安装 express-generator 快速生成项目</h2>
+<pre><code>npm install -g express-generator
+</code></pre><p>然后再之前克隆仓库的上一级目录执行</p>
+<pre><code>express --no-view novel-api
+cd novel-api
+npm install 
+npm install request file-stream-rotator -S
+// Linux MacOS
+DEBUG=novel-api:* &amp; npm start
+// windows 
+set DEBUG=novel-api:* &amp; npm start
+</code></pre><p>生成好的目录结构和文件
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png" alt=""></p>
+<h2 id="设置cors-跨域">设置cors 跨域</h2>
+<p>打开项目根目录app.js,放在路由上面。</p>
+<pre><code>app.all('*', function (req, res, next) {
+    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Origin, X-Requested-With, Content-Type, Accept&quot;);
+    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;PUT,POST,GET,DELETE,OPTIONS&quot;);
+    res.header(&quot;X-Powered-By&quot;, ' 3.2.1')
+    res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);
+    next()
+});
+</code></pre><h2 id="日志写入本地文件">日志写入本地文件</h2>
+<p>按时间分割log日志并写入本地磁盘，需要在app.js文件中引入fs和file-stream-rotator模块。</p>
+<pre><code>let fs = require('fs'); 
+let FileStreamRotator = require('file-stream-rotator');  // 日志按时间分割模块
+
+// 下面代码写在var app = express();下面
+let logDir = path.join(__dirname, 'log');
+
+// 检查是否存在logDir这个目录没有则创建
+fs.existsSync(logDir) || fs.mkdirSync(logDir);
+
+// 日志分割流
+let accessLogStream = FileStreamRotator.getStream({
+    date_format: 'YYYYMMDD',
+    filename: path.join(logDir, 'access-%DATE%.log'),
+    frequency: 'daily',
+    verbose: false
+});
+
+// 日志中间件
+app.use(logger('combined', { stream: accessLogStream }));
+</code></pre><h2 id="创建公共文件">创建公共文件</h2>
+<p>项目根目录创建common文件夹，再里面再新建一个common.json文件</p>
+<pre><code>{
+    &quot;API&quot;: &quot;http://api.zhuishushenqi.com&quot;,
+    &quot;PIC&quot;: &quot;http://statics.zhuishushenqi.com&quot;,
+    &quot;CHAPTER&quot;: &quot;http://chapter2.zhuishushenqi.com&quot;
+}
+</code></pre><p>API域名: <a href="http://api.zhuishushenqi.com">http://api.zhuishushenqi.com</a>
+图片域名: <a href="http://statics.zhuishushenqi.com">http://statics.zhuishushenqi.com</a>
+章节域名: <a href="http://chapter2.zhuishushenqi.com">http://chapter2.zhuishushenqi.com</a></p>
+<h2 id="首页接口">首页接口</h2>
+<p>1.0版本首页接口直接返回最热榜前20条数据。
+修改app.js 文件路由中间件配置</p>
+<pre><code>app.use('/index', indexRouter);
+</code></pre><p>修改routes/index.js 文件</p>
+<pre><code>let express = require('express');
+let request = require('request');
+let common = require('../common/common.json'); // 引用公共文件
+let router = express.Router();
+
+/** 
+  首页数据追书最热榜 Top100
+  获取单一排行榜
+  http://api.zhuishushenqi.com/ranking/{rankingId}
+*/
+router.get('/', function(req, res, next) {
+  // 请求追书最热榜 Top100
+  request.get(`${common.API}/ranking/54d42d92321052167dfb75e3`, function (error, response, body) {
+    if (error){
+      res.send(JSON.stringify({&quot;flag&quot;: 0, &quot;msg&quot;: &quot;请求出错了...&quot;}));
+    }
+    
+    // 解析返回数据取前20条，并添加图片url链接
+    body = JSON.parse(body);
+
+    if (body.ok){
+      let books = body.ranking.books.slice(0, 19);
+      books.forEach(element =&gt; {
+        element.cover = common.PIC + element.cover;
+      });
+
+      res.send(JSON.stringify({ &quot;flag&quot;: 1, &quot;books&quot;: books, &quot;msg&quot;: &quot;OK&quot; }));
+    }else{
+      res.send(JSON.stringify({ &quot;flag&quot;: 0, &quot;msg&quot;: &quot;rankingId有问题&quot; }));
+    }  
+  });
+});
+
+module.exports = router;
+</code></pre><p>访问http://localhost:3000/index 就可以看到返回的数据了。</p>
+<h2 id="搜索接口">搜索接口</h2>
+<p>1.0版本的搜索接口只取前40条数据，可以模糊查询。
+修改app.js 文件路由中间件配置，把users删掉。</p>
+<pre><code>let searchRouter = require('./routes/search');
+app.use('/search', searchRouter);
+</code></pre><p>然后把routes文件夹下面的users.js删除，新建search.js</p>
+<pre><code>let express = require('express');
+let request = require('request');
+let common = require('../common/common.json'); // 引用公共文件
+let router = express.Router();
+
+/** 
+  模糊搜索接口
+  返回模糊搜索前40条数据
+  http://api.zhuishushenqi.com/book/fuzzy-search?query={name}
+*/
+router.get('/', function(req, res, next) {
+  // 判断query参数有没有传递过来
+  if (req.query.query){
+    // req.query.query 编码转义
+    let query = encodeURIComponent(req.query.query);
+    request.get(`${common.API}/book/fuzzy-search?query=${query}`, function (error, response, body) {
+      if (error){
+        res.send(JSON.stringify({ &quot;flag&quot;: 0, &quot;msg&quot;: &quot;请求出错了...&quot; }));
+      }
+
+       // 解析返回数据
+      body = JSON.parse(body);
+
+      if (body.ok){
+        if (body.books.length == 0){
+          res.send(JSON.stringify({ &quot;flag&quot;: 0, &quot;msg&quot;: &quot;没有找到书籍，换个名字试试吧。&quot; }));
+        }
+        
+        // 取前40条，并添加图片url链接
+        let books = body.books.slice(0, 39);
+        books.forEach(element =&gt; {
+          element.cover = common.PIC + element.cover;
+        });
+
+        res.send(JSON.stringify({ &quot;flag&quot;: 1, &quot;books&quot;: books, &quot;msg&quot;: &quot;OK&quot; }));
+      }else{
+        res.send(JSON.stringify({ &quot;flag&quot;: 0, &quot;msg&quot;: &quot;请求出错了...&quot; }));
+      }
+    });
+  }else{
+    res.send(JSON.stringify({&quot;flag&quot;: 0, &quot;msg&quot;: &quot;请传入query参数&quot;}));
+  }
+  
+});
+
+module.exports = router;
+</code></pre><p>访问http://localhost:3000/search/?query=遮天 就可以看到返回的数据了。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/expressjs/morgan">https://github.com/expressjs/morgan</a>
+<a href="https://juejin.im/entry/593a3fdf61ff4b006c737ca4">https://juejin.im/entry/593a3fdf61ff4b006c737ca4</a>
+<a href="https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3">https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

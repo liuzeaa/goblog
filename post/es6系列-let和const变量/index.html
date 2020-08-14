@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ES6系列-let和const变量 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>ES6系列-let和const变量</h1>
+  <time datetime=2018-06-26T17:08:51Z class="post-date">Tue, Jun 26, 2018</time>
+  <p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+<p>首先说说var声明变量的弊端。
+1.可以重复声明
+2.无法限制修改
+3.没有块级作用域
+4.变量会被提升</p>
+<h2 id="let">let</h2>
+<p>let不可以重复声明。</p>
+<pre><code>let a = 2;
+let a = 3;
+alert(a)
+</code></pre><p>如果重复声明会直接报错。
+let有块级作用域。</p>
+<pre><code>{
+  let a = 2;
+  var b = 3;
+}
+console.log(b);
+console.log(a);
+</code></pre><p>会报错 a is not defined。
+let不存在变量提升。</p>
+<pre><code>console.log(a)
+console.log(b)
+var a = 1;
+let b = 2;
+</code></pre><p>会打印出 a undefined b is not defined。</p>
+<h2 id="const">const</h2>
+<p>const常量是不可以被修改的。</p>
+<pre><code>const a = 'lanpangzhi';
+a = 11;
+alert(a)
+</code></pre><p>修改会直接报错，但是如果是对象数据类型可以在对象下添加新得属性。</p>
+<pre><code>const a = {};
+a.b = 2;
+console.log(a)
+</code></pre><p>这样写不会报错，常量a存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把a指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p>
+<p>const不可以重复声明。</p>
+<pre><code>const a = 2;
+const a = 3;
+alert(a)
+</code></pre><p>如果重复声明会直接报错。</p>
+<p>const有块级作用域。</p>
+<pre><code>{
+  const a = 2;
+  var b = 3;
+}
+console.log(b);
+console.log(a);
+</code></pre><p>会报错 a is not defined。</p>
+<p>const不存在变量提升。</p>
+<pre><code>console.log(a)
+console.log(b)
+var a = 1;
+const b = 2;
+</code></pre><p>会打印出 a undefined b is not defined。</p>
+<h2 id="例子">例子</h2>
+<p>让i从0输出到5，按顺序输出，es5版本需要闭包来实现。</p>
+<pre><code>for (var i = 0; i &lt;= 5; i++){
+	(function(i){
+		console.log(i)
+	})(i)
+}
+</code></pre><p>es6版本</p>
+<pre><code>for (let i = 0; i &lt;= 5; i++){
+	console.log(i)
+}
+</code></pre><p>let和const解决了var的弊端，瞬间开发变简单了很多。</p>
+<h1 id="参考">参考</h1>
+<p><a href="http://es6.ruanyifeng.com/#docs/let">http://es6.ruanyifeng.com/#docs/let</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

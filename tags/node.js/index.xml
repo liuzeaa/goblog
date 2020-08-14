@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/node.js/</link>
+    <description>Recent content in Node.js on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 20 Nov 2018 09:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pm2开机自启</title>
+      <link>https://liuzeaa.github.io/goblog/post/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/</link>
+      <pubDate>Tue, 20 Nov 2018 09:40:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;pm2 start  # 你要启动的程序，如果有多个都要先启动
+pm2 save
+pm2 startup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行代码，重启服务器pm2会自动启动。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node定时任务</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Sun, 08 Jul 2018 18:09:23 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description>&lt;p&gt;我们再开发过程中，会经常碰见这样的场景例如每天早上八点执行一个操作或者执行一个爬虫，下面就说一下如何用node-cron处理这些定时任务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>部署小说api服务到腾讯云</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/</link>
+      <pubDate>Tue, 29 May 2018 11:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/</guid>
+      <description>&lt;p&gt;小说api1.0版本写完了，接下来就开始部署到服务器上，用到了nginx、pm2、nvm、git、OpenSSL。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用apidoc文档神器，快速生成api文档</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8apidoc%E6%96%87%E6%A1%A3%E7%A5%9E%E5%99%A8%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90api%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sat, 26 May 2018 11:13:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8apidoc%E6%96%87%E6%A1%A3%E7%A5%9E%E5%99%A8%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90api%E6%96%87%E6%A1%A3/</guid>
+      <description>&lt;p&gt;写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0（三）</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A11-0%E4%B8%89/</link>
+      <pubDate>Sat, 26 May 2018 10:54:41 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A11-0%E4%B8%89/</guid>
+      <description>&lt;p&gt;之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0(二)</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1-%E4%BA%8C/</link>
+      <pubDate>Fri, 18 May 2018 13:26:05 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1-%E4%BA%8C/</guid>
+      <description>&lt;p&gt;之前完成了首页和搜索的接口，现在就开始写剩下的接口。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Express开发小说API接口服务1.0（一）</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Thu, 17 May 2018 15:10:56 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4api%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;p&gt;1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。
+目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用express-generator快速生成express应用</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express-generator%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90express%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Mon, 14 May 2018 16:08:03 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BD%BF%E7%94%A8express-generator%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90express%E5%BA%94%E7%94%A8/</guid>
+      <description>&lt;p&gt;express-generator是Express应用的快速生成器，可以随意使用此结构或者对其进行修改以最大程度满足自己的需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node爬虫</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Sat, 12 May 2018 15:37:42 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E7%88%AC%E8%99%AB/</guid>
+      <description>&lt;p&gt;什么是爬虫呢，是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。为什么选用node呢，因为我是前端，当然要用js实现。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node连接MySQL</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E8%BF%9E%E6%8E%A5mysql/</link>
+      <pubDate>Thu, 10 May 2018 15:40:04 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E8%BF%9E%E6%8E%A5mysql/</guid>
+      <description>&lt;p&gt;之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Express文件上传</title>
+      <link>https://liuzeaa.github.io/goblog/post/express%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Fri, 04 May 2018 15:58:58 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/express%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
+      <description>&lt;p&gt;在后台项目中会经常碰见文件上传这个需求，例如用户上传一张头像等。。。今天就用Multer这个中间件来解决文件上传。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node处理前台get请求</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E5%A4%84%E7%90%86%E5%89%8D%E5%8F%B0get%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Fri, 02 Mar 2018 10:07:32 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E5%A4%84%E7%90%86%E5%89%8D%E5%8F%B0get%E8%AF%B7%E6%B1%82/</guid>
+      <description>&lt;p&gt;下面代码实现了用node.js接收前台发送的get请求。用到了http模块和url模块。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>url模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/url%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Thu, 01 Mar 2018 16:03:22 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/url%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。
+模块只有三个方法，用起来也简单。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node处理前台post请求</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E5%A4%84%E7%90%86%E5%89%8D%E5%8F%B0post%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Thu, 01 Mar 2018 10:29:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E5%A4%84%E7%90%86%E5%89%8D%E5%8F%B0post%E8%AF%B7%E6%B1%82/</guid>
+      <description>&lt;p&gt;下面代码实现了用node.js接收前台发送的post请求。用到了http模块和querystring模块。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>stream模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/stream%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Tue, 27 Feb 2018 13:27:30 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/stream%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。
+Node.js 提供了多种流对象。 例如， HTTP 请求 和 process.stdout 就都是流的实例。
+流可以是可读的、可写的，或是可读写的。所有的流都是 EventEmitter 的实例。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>path模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/path%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Mon, 26 Feb 2018 11:17:42 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/path%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;path模块是Node.js提供用于处理文件与目录的路径。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>fs模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/fs%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Thu, 22 Feb 2018 14:32:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/fs%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;fs模块是Node.js提供来操作本地文件（读、写、复制、删除&amp;hellip;）等功能的模块。
+所有的方法都有异步和同步的形式。
+异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。
+当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>querystring模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/querystring%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Fri, 09 Feb 2018 13:10:53 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/querystring%E6%A8%A1%E5%9D%97/</guid>
+      <description>querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。 处理get请求参数的时候用的比较多。
+把字符串转换成对象 querystring.parse(str[, sep[, eq[, options]]]) let querystring = require(&#39;querystring&#39;); let query = querystring.parse(&#39;name=lanpangzhi&amp;amp;age=18&#39;); console.log(query); # 输出{ name: &#39;lanpangzhi&#39;, age: &#39;18&#39; } // 添加第二个参数 sep let query2 = querystring.parse(&#39;name=lanpangzhi@age=18&#39;,&#39;@&#39;); console.log(query2); # 输出{ name: &#39;lanpangzhi&#39;, age: &#39;18&#39; } // sep: 第二个参数用于界定查询字符串中的键值对的子字符串。默认为 &#39;&amp;amp;&#39;。 // 添加第三个参数 eq let query3 = querystring.parse(&#39;name|lanpangzhi@age|18&#39;,&#39;@&#39;,&#39;|&#39;); console.log(query3); // eq: 用于界定查询字符串中的键与值的子字符串。默认为 &#39;=&#39;。 // sep eq 可以替换割分字符串的关键字，在某些特定的场景会用的。 // 第四个参数用得比较少 let query = querystring.parse(&#39;name|lanpangzhi@age|18@age2|20@age3|21@age4|555&#39;,&#39;@&#39;,&#39;|&#39;,{ decodeURIComponent: function test(str) { return str+= &#39;1&#39; }, maxKeys: 4 }); console.</description>
+    </item>
+    
+    <item>
+      <title>Buffer对象</title>
+      <link>https://liuzeaa.github.io/goblog/post/buffer%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Tue, 06 Feb 2018 13:43:40 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/buffer%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;在 ECMAScript 2015 (ES6) 引入 TypedArray 之前，JavaScript 语言没有读取或操作二进制数据流的机制。 Buffer 类被引入作为 Node.js API 的一部分，使其可以在 TCP 流或文件系统操作等场景中处理二进制数据流。
+Buffer 类在 Node.js 中是一个全局变量，因此无需使用 require(&amp;lsquo;buffer&amp;rsquo;)。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>global对象</title>
+      <link>https://liuzeaa.github.io/goblog/post/global%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Fri, 02 Feb 2018 14:33:27 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/global%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。
+在游览器Javascript中全局对象是window，而Node.js中全局对象是global。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>http模块</title>
+      <link>https://liuzeaa.github.io/goblog/post/http%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Mon, 15 Jan 2018 17:05:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/http%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;p&gt;http模块是node提供搭建http客户端和服务端的核心模块。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Node模块机制</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Mon, 08 Jan 2018 16:11:02 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/</guid>
+      <description>JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。 所以JavaScript社区提出了commonjs规范来解决这些问题。
+一个Node应用由模块组成，每个js文件就是一个独立模块。 npm基于commonjs实现包的管理使我们开发Node.js更方便。
+commonjs规范 引用模块 在commonjs规范中，定义了 require() 方法，这个方法接受一个模块的标识。
+var math = require(&#39;math&#39;); 定义模块 模块有自己的作用域。在模块里面定义的变量、函数、类，都是私有的，对其他文件不可见。
+上下文中提供了一个 exports 对象可以导出当前模块的方法或者变量，并且它是唯一导出的出口。在模块中，还存在一个 module 对象，它代表当前模块，exports 是 module 的属性。
+// math.js function add(a,b){ return a + b; } exports.add = add; # 导出一个add的方法 再新建一个文件就可以用 require()引用这个模块了
+// app.js var math = require(&#39;math&#39;); console.log(math.add(1,2)); # 3 模块标识 模块标识就是传递给 require() 方法的参数，它必须是符合小驼峰命名的规范，或者以 .. 开头的相对路径，或者绝对路径。它可以没有文件后缀名.js。
+模块缓存 加载模块后会被缓存,多次加载还是同一个对象。 查看模块缓存 require.cache 查看模块绝对路径 require.resolve(./math.js) 删除模块的缓存 require.cache[require.resolve(./math.js)]
+模块的循环加载 // a.js console.log(&#39;a 开始&#39;); exports.done = false; const b = require(&#39;.</description>
+    </item>
+    
+    <item>
+      <title>什么是Node.js</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E4%BB%80%E4%B9%88%E6%98%AFnode-js/</link>
+      <pubDate>Mon, 08 Jan 2018 13:29:21 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E4%BB%80%E4%B9%88%E6%98%AFnode-js/</guid>
+      <description>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。 它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。
+I/O 输入(Input)： 从系统写入文件 输出(Output)： 从系统读取文件
+同步和异步 同步是指发起一个调用之后主线程挂起，调用者主动等待调用返回结果。 异步是指发起一个调用之后主线程还可以发起别的调用，被调用者通知调用者返回结果。
+阻塞式和非阻塞式 非阻塞式是指发起一个调用不会阻塞主线程的执行，非阻塞式是实现异步的前提。 阻塞式是指发起一个调用主线程是被挂起，调用完成后才可以执行其他操作。
+单线程和多线程 单线程是指程序按顺序执行,前面的程序执行完后面才程序可以执行。 多线程是指同时执行多个程序，当前程序执行不影响其他程序执行。
+事件驱动 这种模型的程序运行流程是由用户的动作（如鼠标的按键，键盘的按键动作）或者是由其他程序的消息来决定的。</description>
+    </item>
+    
+    <item>
+      <title>nvm管理node.js版本（Windows系统）</title>
+      <link>https://liuzeaa.github.io/goblog/post/nvm%E7%AE%A1%E7%90%86node-js%E7%89%88%E6%9C%ACwindows%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 26 Dec 2017 14:03:59 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/nvm%E7%AE%A1%E7%90%86node-js%E7%89%88%E6%9C%ACwindows%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;在开发过程中偶尔会碰见不同项目依赖的node版本不一样，而node没有提供自动切换版本的功能，这个时候就需要nvm出马了，n也可以管理node版本（注：不支持Windows）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>node.js Windows下安装（笔记）</title>
+      <link>https://liuzeaa.github.io/goblog/post/node-js-windows%E4%B8%8B%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 12 Dec 2017 16:26:01 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node-js-windows%E4%B8%8B%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;偶数位为稳定版本，奇数位为非稳定版本（开发版）&lt;/li&gt;
+&lt;li&gt;稳定版本中已发布的API是不会改变的&lt;/li&gt;
+&lt;li&gt;奇数开头的开发版就是会不断变化更新&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

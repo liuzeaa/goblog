@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>在vue使用clipboard.js &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>在vue使用clipboard.js</h1>
+  <time datetime=2018-12-23T11:30:36Z class="post-date">Sun, Dec 23, 2018</time>
+  <p>上一篇写了怎么使用clipboard.js，今天就写下怎么在vue里面使用clipboard.js</p>
+<h2 id="安装">安装</h2>
+<p>有人已经封装好vue插件了我们直接安装使用就好</p>
+<pre><code>npm install --save vue-clipboard2
+</code></pre><h2 id="使用">使用</h2>
+<pre><code>import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
+
+Vue.use(VueClipboard)
+</code></pre><h2 id="例子">例子</h2>
+<p>指令形式的</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+
+&lt;template id=&quot;t&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+  &lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt;
+  &lt;button type=&quot;button&quot;
+    v-clipboard:copy=&quot;message&quot;
+    v-clipboard:success=&quot;done&quot;&gt;Copy!&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+new Vue({
+  el: '#app',
+  template: '#t',
+  data: function () {
+    return {
+      message: 'vbook.langpz.com'
+    }
+  },
+  methods: {
+    done: function () {
+      alert('Copied成功!')
+    }
+  }
+})
+&lt;/script&gt;
+</code></pre><p>v-clipboard:copy  这里放你要复制的内容
+v-clipboard:success  复制成功调用的回调</p>
+<p>方法形式的</p>
+<pre><code>let container = this.$refs.container
+this.$copyText(&quot;Text to copy&quot;, container) // 返回一个Promise
+</code></pre><p>你可以通过use的时候设置container为当前元素</p>
+<pre><code>import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
+
+VueClipboard.config.autoSetContainer = true // 默认false
+Vue.use(VueClipboard)
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="https://github.com/Inndy/vue-clipboard2">https://github.com/Inndy/vue-clipboard2</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

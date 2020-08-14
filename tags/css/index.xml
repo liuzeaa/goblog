@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/css/</link>
+    <description>Recent content in css on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 28 Apr 2018 13:14:04 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>css实现元素垂直水平居中-包括未知宽高的元素</title>
+      <link>https://liuzeaa.github.io/goblog/post/css%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-%E5%8C%85%E6%8B%AC%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Sat, 28 Apr 2018 13:14:04 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/css%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-%E5%8C%85%E6%8B%AC%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <description>&lt;p&gt;这个一道很经典的面试题，做项目中也常会出现这样的需求。
+现在我就用几种比较常用的方法。兼容性也列出来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>css实现单行、多行文本溢出显示省略号</title>
+      <link>https://liuzeaa.github.io/goblog/post/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/</link>
+      <pubDate>Tue, 19 Dec 2017 10:58:41 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;	white-space: nowrap;  		// 规定段落中的文本不进行换行
+	overflow: hidden; 		// 溢出隐藏
+	text-overflow: ellipsis;	// 文本溢出显示省略号
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

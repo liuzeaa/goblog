@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>verdaccio on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/verdaccio/</link>
+    <description>Recent content in verdaccio on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 13 Aug 2020 14:37:01 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/verdaccio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>verdaccio搭建npm私有库</title>
+      <link>https://liuzeaa.github.io/goblog/post/verdaccio%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%89%E5%BA%93/</link>
+      <pubDate>Thu, 13 Aug 2020 14:37:01 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/verdaccio%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
+      <description>&lt;p&gt;搭间私有库的原因很简单，目前正在开发一个组件库，提供给公司内部使用，我不想去注册npm，也不想等待npm的审核，只想要有个仓库快速测试发布自己的npm包&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

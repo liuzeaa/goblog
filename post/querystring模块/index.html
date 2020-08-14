@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>querystring模块 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>querystring模块</h1>
+  <time datetime=2018-02-09T13:10:53Z class="post-date">Fri, Feb 9, 2018</time>
+  <p>querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。
+处理get请求参数的时候用的比较多。</p>
+<!-- raw HTML omitted -->
+<h2 id="把字符串转换成对象--querystringparsestr-sep-eq-options">把字符串转换成对象  querystring.parse(str[, sep[, eq[, options]]])</h2>
+<pre><code>let querystring = require('querystring');
+
+let query =  querystring.parse('name=lanpangzhi&amp;age=18');
+console.log(query); # 输出{ name: 'lanpangzhi', age: '18' }
+
+// 添加第二个参数 sep
+let query2 = querystring.parse('name=lanpangzhi@age=18','@');
+console.log(query2); # 输出{ name: 'lanpangzhi', age: '18' }
+// sep: 第二个参数用于界定查询字符串中的键值对的子字符串。默认为 '&amp;'。
+
+// 添加第三个参数 eq
+let query3 = querystring.parse('name|lanpangzhi@age|18','@','|');
+console.log(query3); 
+// eq:  用于界定查询字符串中的键与值的子字符串。默认为 '='。
+// sep eq 可以替换割分字符串的关键字，在某些特定的场景会用的。
+
+// 第四个参数用得比较少
+let query = querystring.parse('name|lanpangzhi@age|18@age2|20@age3|21@age4|555','@','|',{
+    decodeURIComponent: function test(str) {
+        return str+= '1'
+    },
+    maxKeys: 4
+});
+console.log(query); # 输出 { name1: 'lanpangzhi1', age1: '181', age21: '201', age31: '211' }
+// 第四个参数是一个对象， 里面有 decodeURIComponent 和 maxKeys 两个参数。
+// decodeURIComponent: 解码查询字符串的字符时使用的函数。默认为 querystring.unescape()。
+// maxKeys: 指定要解析的键的最大数量。默认为 1000。指定为 0 则不限制。
+// 我刚才指定是4  所以 age4  这个参数没输出。
+</code></pre><h2 id="把对象转换成字符串-querystringstringifyobj-sep-eq-options">把对象转换成字符串 querystring.stringify(obj[, sep[, eq[, options]]])</h2>
+<pre><code>let querystring = require('querystring');
+
+let obj = { name: 'lanpangzhi', baz: ['qux', 'quux'], age: '18' };
+let str = querystring.stringify(obj);
+console.log(str); # 输出 name=lanpangzhi&amp;baz=qux&amp;baz=quux&amp;age=18
+
+// 添加第二个参数 sep
+let obj = { name: 'lanpangzhi', age: '18' };
+let str = querystring.stringify(obj,'@');
+console.log(str); # 输出 name=lanpangzhi@age=18
+// sep: 第二个参数用于界定查询字符串中的键值对的子字符串。默认为 '&amp;'。
+
+// 添加第三个参数 eq
+let obj = { name: 'lanpangzhi', age: '18' };
+let str = querystring.stringify(obj,'@','|');
+console.log(str);
+// eq:  用于界定查询字符串中的键与值的子字符串。默认为 '='。
+
+// 第四个参数 options  基本上用不到
+// encodeURIComponent &lt;Function&gt; : 把对象中的字符转换成查询字符串时使用的函数。默认为 querystring.escape()。
+</code></pre><p>querystring.stringify 和 querystring.parse 功能正好是对应的， 基本上第四个参数用不到，第二和第三个参数只有在某些特定的场景才会使用，指定切割默写字符，或者输出某些字符。
+querystring 这个模块还有两个方法，但是基本上不会用到，更多可以去node中文网或者官网查看。
+新年快乐2018</p>
+<h1 id="参考">参考</h1>
+<p><a href="http://nodejs.cn/api/querystring.html">http://nodejs.cn/api/querystring.html</a></p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

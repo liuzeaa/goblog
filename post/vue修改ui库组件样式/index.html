@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>vue（scoped）修改UI库组件样式 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>vue（scoped）修改UI库组件样式</h1>
+  <time datetime=2018-09-15T16:40:59Z class="post-date">Sat, Sep 15, 2018</time>
+  <p>在工作中经常会碰见设计稿和UI库的组件样式不一样，在style标签加了scoped，就无法修改UI组件的样式了，因为当前组件样式只应用到这个组件上。</p>
+<h2 id="深度作用选择器">深度作用选择器</h2>
+<p>如果你想修改组件的样式就可以使用 &raquo;&gt; 操作符：</p>
+<pre><code>&lt;style scoped&gt;
+.langpz &gt;&gt;&gt; .b { /* ... */ }
+&lt;/style&gt;
+</code></pre><p>上述代码将会编译成：</p>
+<pre><code>.langpz[data-v-f3f3eg9] .b { /* ... */ }
+</code></pre><p>如果你用的是SCSS或者LESS需要把 &raquo;&gt; 替换成 /deep/</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>如果组件的样式是js动态生成的，深度作用选择器前面就不要跟class了。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://vue-loader.vuejs.org/zh/guide/scoped-css.html#%E6%B7%B7%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F">https://vue-loader.vuejs.org/zh/guide/scoped-css.html#%E6%B7%B7%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%92%8C%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

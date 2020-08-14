@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>nativefier 一行命令生成桌面应用 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>nativefier 一行命令生成桌面应用</h1>
+  <time datetime=2020-08-13T09:08:30Z class="post-date">Thu, Aug 13, 2020</time>
+  <p>nativefier 可以快速生成可执行文件（.app，.exe，等），在Windows，MacOS和Linux的使用。</p>
+<h2 id="安装">安装</h2>
+<p>Node.js 版本要 &gt;= 10</p>
+<pre><code>npm install nativefier -g
+
+</code></pre><h2 id="使用">使用</h2>
+<p>打包一个百度的桌面应用</p>
+<pre><code>nativefier &quot;https://www.baidu.com/&quot;
+</code></pre><p>然后会在执行命令目录下生成APP-win32-x64 文件夹，进入然后打开APP.exe，一个百度的桌面版就打包好了，可以打包任意网站。
+<img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nativefier/QQ%E5%9B%BE%E7%89%8720200627203807.png" alt=""></p>
+<h2 id="注意事项">注意事项</h2>
+<p>因为这个是基于Electron打包的，执行命名要下载Electron 有的时候会下载失败导致打包失败。
+解决方案设置国内源</p>
+<ul>
+<li>预处理方案：</li>
+</ul>
+<pre><code>npm set ELECTRON_MIRROR=&quot;https://npm.taobao.org/mirrors/electron/&quot;
+</code></pre><ul>
+<li>
+<p>windows推荐方案</p>
+<p>环境变量中新增用户变量名称为<code>ELECTRON_MIRROR</code>，值为：<code>http://npm.taobao.org/mirrors/electron/</code></p>
+</li>
+<li>
+<p>mac/linux推荐方案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim ~/.zshrc
+<span style="color:#75715e"># 增加命令</span>
+export ELECTRON_MIRROR<span style="color:#f92672">=</span>http://npm.taobao.org/mirrors/electron/
+<span style="color:#75715e"># 然后按esc键，输入:wq推出编辑并保存</span>
+<span style="color:#75715e"># 记得要source一下</span>
+source ~/.zshrc
+</code></pre></div></li>
+</ul>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/jiahaog/nativefier">https://github.com/jiahaog/nativefier</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

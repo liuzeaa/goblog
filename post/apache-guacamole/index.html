@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Apache Guacamole &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Apache Guacamole</h1>
+  <time datetime=2020-08-13T08:00:08Z class="post-date">Thu, Aug 13, 2020</time>
+  <h2 id="接口">接口</h2>
+<h3 id="获取token">获取token</h3>
+<p><strong>Url</strong>：http://192.168.2.231:8080/guacamole/api/tokens<br>
+<strong>Method</strong>：POST<br>
+<strong>Content-Type</strong>：application/x-www-form-urlencoded<br>
+<strong>FormData</strong>：</p>
+<ul>
+<li>username:admin</li>
+<li>password:admin</li>
+</ul>
+<p><strong>Response</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;authToken&#34;</span>: <span style="color:#e6db74">&#34;DB8DCC2E098BE5ED9B200367C1D11BCE9FB6615096B5836BE33F328E8F5C916D&#34;</span>,
+    <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;admin&#34;</span>,
+    <span style="color:#f92672">&#34;dataSource&#34;</span>: <span style="color:#e6db74">&#34;default&#34;</span>,
+    <span style="color:#f92672">&#34;availableDataSources&#34;</span>: [
+        <span style="color:#e6db74">&#34;quickconnect&#34;</span>,
+        <span style="color:#e6db74">&#34;default&#34;</span>
+    ]
+}
+</code></pre></div><h3 id="获取identifier">获取identifier</h3>
+<p><strong>Url</strong>：http://192.168.2.231:8080/guacamole/api/session/ext/quickconnect/create?token=<code>7579DC8CC7DCD2682A2D66C465EA4FF5B011767F1D876F5F9AC29E5BF9106BBE</code><br>
+<strong>Method</strong>：POST<br>
+<strong>Content-Type</strong>：application/x-www-form-urlencoded<br>
+<strong>FormData</strong>：</p>
+<ul>
+<li>uri:ssh://root:vagrant@192.168.2.91:22</li>
+</ul>
+<p><strong>Response</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;identifier&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>
+}
+</code></pre></div><h2 id="注意事项">注意事项</h2>
+<ul>
+<li>后端需要将“获取token接口”和“获取identifier接口”作为一个接口返回给前端，将 <code>token</code> 和 <code>identifier</code> 一并返回</li>
+<li>获取token接口获取的 <code>token</code>，默认超时时间为1小时，后端需要将该token缓存，避免太频繁的生成token。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://guacamole.apache.org/doc/gug/adhoc-connections.html">第15章临时连接</a></li>
+</ul>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

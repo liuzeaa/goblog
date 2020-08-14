@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue2.0，clipboard.js on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/vue2.0clipboard.js/</link>
+    <description>Recent content in vue2.0，clipboard.js on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 23 Dec 2018 11:30:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/vue2.0clipboard.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在vue使用clipboard.js</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E5%9C%A8vue%E4%BD%BF%E7%94%A8clipboard-js/</link>
+      <pubDate>Sun, 23 Dec 2018 11:30:36 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E5%9C%A8vue%E4%BD%BF%E7%94%A8clipboard-js/</guid>
+      <description>&lt;p&gt;上一篇写了怎么使用clipboard.js，今天就写下怎么在vue里面使用clipboard.js&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

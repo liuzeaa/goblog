@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>node定时任务 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>node定时任务</h1>
+  <time datetime=2018-07-08T18:09:23Z class="post-date">Sun, Jul 8, 2018</time>
+  <p>我们再开发过程中，会经常碰见这样的场景例如每天早上八点执行一个操作或者执行一个爬虫，下面就说一下如何用node-cron处理这些定时任务。</p>
+<h2 id="安装node-cron">安装node-cron</h2>
+<pre><code>npm i cron -S
+</code></pre><h2 id="使用">使用</h2>
+<p>cron值的范围。
+Seconds: 0-59 (秒)
+Minutes: 0-59 (分钟)
+Hours: 0-23   (小时)
+Day of Month: 1-31 (天)
+Months: 0-11 (Jan-Dec) (月)
+Day of Week: 0-6 (Sun-Sat) (星期)</p>
+<h3 id="每隔十秒执行一次">每隔十秒执行一次</h3>
+<pre><code>var CronJob = require('cron').CronJob;
+var job = new CronJob('*/10 * * * * *', function() {
+  console.log(&quot;执行了&quot;)
+  },
+  function () {
+    /* 定时任务停止时执行此功能 */
+  },
+  true /* 马上开始定时任务 */
+);
+</code></pre><h3 id="每个工作日早上7点执行一次">每个工作日早上7点执行一次</h3>
+<pre><code>var CronJob = require('cron').CronJob;
+var job = new CronJob('00 00 7 * * 1-5', function() {
+  console.log(&quot;执行了&quot;)
+  },
+  function () {
+    /* 定时任务停止时执行此功能 */
+  },
+  true  /* 马上开始定时任务 */
+);
+</code></pre><h3 id="手动执行定时任务">手动执行定时任务</h3>
+<pre><code>var cron = require('cron');
+
+var job1 = new cron.CronJob({
+  cronTime: '* * * * * *',
+  onTick: function() {
+    console.log('开始工作');
+  },
+  onComplete: function() {
+    console.log('停止工作')
+  },
+  start: false
+});
+// 执行job1定时任务
+job1.start();
+</code></pre><h3 id="手动停止定时任务">手动停止定时任务</h3>
+<pre><code>var cron = require('cron');
+
+var job1 = new cron.CronJob({
+  cronTime: '* * * * * *',
+  onTick: function() {
+    console.log('开始工作');
+  },
+  onComplete: function() {
+    console.log('停止工作')
+  },
+  start: false
+});
+job1.start()
+
+setTimeout(() =&gt; {
+    //  五秒钟后停止定时任务并触发停止回调
+    job1.stop();
+} ,5002);
+</code></pre><h3 id="捕获异常">捕获异常</h3>
+<pre><code>try {
+	new CronJob('invalid cron pattern', function() {
+		console.log('this should not be printed');
+	})
+} catch(ex) {
+	console.log(&quot;cron pattern not valid&quot;);
+}
+</code></pre><p>以上提供了几种常用场景，更多使用可以去github查看api。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/kelektiv/node-cron">https://github.com/kelektiv/node-cron</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

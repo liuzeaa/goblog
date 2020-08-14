@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Express中间件body-parser简单实现 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Express中间件body-parser简单实现</h1>
+  <time datetime=2018-04-18T11:49:16Z class="post-date">Wed, Apr 18, 2018</time>
+  <p>之前文章写了怎么用body-parser中间件处理post请求，今天就大概实现下body-parser中urlencoded 这个方法。</p>
+<p>首先通过命令提示输入 mkdir lib &amp;&amp; cd lib。
+再输入touch body-parser.js。
+把下面的代码在body-parser.js 敲一遍。</p>
+<pre><code>// lib/body-parser.js
+const querystring = require('querystring');
+
+module.exports.urlencoded = function (req, res, next) {
+    let chunks = [];
+    req.on('data', data =&gt; {
+        chunks.push(data);
+    });
+
+    req.on('end', () =&gt; {
+        // 合并Buffer。
+        let buf = Buffer.concat(chunks).toString();
+        // 把querystring解析过的json 放到 req.body上。
+        req.body = querystring.parse(buf);
+        next();
+    });
+}
+</code></pre><p>下面是主程序代码。</p>
+<pre><code>// app.js
+const express = require('express');
+const bodyParser = require('./lib/body-parser');
+
+let app = express();
+
+app.use(bodyParser.urlencoded);
+
+
+app.post('/', (req, res) =&gt; {
+    res.send(req.body);
+});
+
+app.listen(8000);
+</code></pre><p>现在就完成和body-parser中间件类似的功能了，req.body上面有请求过来的post数据。</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

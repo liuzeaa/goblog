@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>npm使用介绍 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>npm使用介绍</h1>
+  <time datetime=2017-12-20T14:56:09Z class="post-date">Wed, Dec 20, 2017</time>
+  <p>npm是随同NodeJS一起安装的包管理工具、官网<a href="https://www.npmjs.com">https://www.npmjs.com</a></p>
+<h2 id="创建一个模块">创建一个模块</h2>
+<pre><code>	npm init
+</code></pre><p>会提示你输入包名等，然后生成一个package.json文件,文件内容如下</p>
+<pre><code>{
+  &quot;name&quot;: &quot;xxx&quot;,   
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;lanpang&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+</code></pre><p>package.json文件属性说明</p>
+<ul>
+<li>name - 包名</li>
+<li>version - 包的版本号</li>
+<li>description - 包的描述，方便在npm search中搜索</li>
+<li>main - main字段配置一个文件名指向模块的入口程序。如果你包的名字叫xxx，然后用户require(&ldquo;xxx&rdquo;)，main配置的模块的exports对象会被返回</li>
+<li>scripts - 是一个由脚本命令组成的hash对象，他们在包不同的生命周期中被执行。key是生命周期事件，value是要运行的命令</li>
+<li>author - 作者</li>
+<li>license - 许可证，让人知道使用的权利和限制的
+更多说明请查看<a href="https://github.com/ericdum/mujiang.info/issues/6/">https://github.com/ericdum/mujiang.info/issues/6/</a></li>
+</ul>
+<h2 id="安装模块">安装模块</h2>
+<pre><code>	npm install (Module Name) options  # 语法
+	npm install express                # 本地安装
+	npm install express -g             # 全局安装
+	npm install express@1.0.0          # 安装指定版本
+</code></pre><p>npm 的包安装分为本地安装（local）、全局安装（global）两种。</p>
+<ul>
+<li>本地安装：将安装包放在当前目录下的 ./node_modules 下。</li>
+<li>本地安装：可以通过 require(Module Name) 来引入本地安装的包。</li>
+<li>全局安装：node安装目录/node_modules。</li>
+<li>全局安装：可以直接在命令行里使用。</li>
+</ul>
+<p><strong>查看全局安装目录</strong></p>
+<pre><code>	npm list -g --depth=0
+</code></pre><p>安装包信息将加入到dependencies（生产阶段的依赖）</p>
+<pre><code>	npm install express --save	# npm5已经将--save变成了默认参数，执行 install 依赖包时默认都会带上，除非加上 --no-save。
+	npm install express -S          # 缩写
+</code></pre><p>安装包信息将加入到devDependencies（开发和测试阶段的依赖）</p>
+<pre><code>	npm install gulp --save-dev
+	npm install gulp -D  # 缩写
+</code></pre><p>注: 包的依赖都被写入了package.json文件后，他人git或者svn下载项目可以通过npm install 安装项目依赖的包。</p>
+<h2 id="卸载包">卸载包</h2>
+<pre><code>	npm uninstall gulp 	# 如果你安装的包带参数 --save 或者 --save-dev  必须npm uninstall gulp 要添加对应参数
+</code></pre><h2 id="更新包">更新包</h2>
+<p>更新本地包</p>
+<pre><code>	npm update gulp
+</code></pre><p>更新全局包</p>
+<pre><code>	npm update gulp -g
+</code></pre><h2 id="检查包是否已经过时">检查包是否已经过时</h2>
+<p>检查本地包</p>
+<pre><code>	npm outdated
+</code></pre><p>检查全局包</p>
+<pre><code>	npm outdated -g --depth=0
+</code></pre><h2 id="搜索包">搜索包</h2>
+<pre><code>	npm search express
+</code></pre><h2 id="查看包安装信息">查看包安装信息</h2>
+<p>查看本地包</p>
+<pre><code>	npm list
+</code></pre><p>查看全局包</p>
+<pre><code>	npm list -g
+</code></pre><h2 id="npm-scripts">npm-scripts</h2>
+<p>可以修改package.json文件scripts增加自定义命令，执行一些操作</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;start&quot; : &quot;gulp&quot;
+}
+</code></pre><p>此时在cmd或git bash中输入npm start 就会执行gulp命令</p>
+<h2 id="包版本号">包版本号</h2>
+<p>默认1.0.0</p>
+<ul>
+<li>bug修复和其他小的变化：修补程序版本，增加最后一个数字，例如1.0.1。</li>
+<li>不破坏现有功能的新功能：次要版本，增加中间数字，例如1.1.0。</li>
+<li>主要版本，增加第一个数字，例如2.0.0。</li>
+</ul>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

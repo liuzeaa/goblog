@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Git版本回退 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Git版本回退</h1>
+  <time datetime=2019-06-09T18:04:28Z class="post-date">Sun, Jun 9, 2019</time>
+  <p>在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。</p>
+<h2 id="回退指定commit">回退指定commit</h2>
+<pre><code>git log
+git reset --hard 版本号
+</code></pre><p>git log 查看之前提交的commit版本号，然后执行回退。</p>
+<h2 id="回退命令">回退命令</h2>
+<pre><code>git reflog
+git reset --hard 版本号
+</code></pre><p>git reflog 查看之前执行命令版本号，然后执行回退。</p>
+<h2 id="cherry-pick">cherry-pick</h2>
+<p>还有一种场景， 比如有三个commit，保留1和3，2舍去这个时候就要用到 cherry-pick</p>
+<pre><code>git reflog 
+git reset --hard 1的版本号
+git cherry-pick  3的版本号
+</code></pre><p>git reflog  找到commit 1和3的版本号 回退到第一个版本，然后再执行cherry-pick把3的修改合并到1里，<strong>如果有冲突就解决冲突</strong>。</p>
+<h2 id="已经提交远端仓库">已经提交远端仓库</h2>
+<pre><code>git reset --hard 版本号
+git push -f origin/远端分支
+</code></pre><p>先回退版本，然后<strong>强制推送到远端仓库</strong>。</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

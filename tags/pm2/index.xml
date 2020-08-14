@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pm2 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/pm2/</link>
+    <description>Recent content in pm2 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 20 Nov 2018 09:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/pm2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pm2开机自启</title>
+      <link>https://liuzeaa.github.io/goblog/post/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/</link>
+      <pubDate>Tue, 20 Nov 2018 09:40:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;pm2 start  # 你要启动的程序，如果有多个都要先启动
+pm2 save
+pm2 startup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行代码，重启服务器pm2会自动启动。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>骨架屏 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/%E9%AA%A8%E6%9E%B6%E5%B1%8F/</link>
+    <description>Recent content in 骨架屏 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Apr 2019 16:07:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/%E9%AA%A8%E6%9E%B6%E5%B1%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>给项目加一个骨架屏吧</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7/</link>
+      <pubDate>Sat, 27 Apr 2019 16:07:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7/</guid>
+      <description>&lt;p&gt;骨架屏可以理解为是当数据还未加载进来前，页面的一个空白版本，一个简单的关键渲染路径。用户会看到一个样式简单，描绘了当前页面的大致框架的骨架屏页面，然后骨架屏中各个占位部分被实际资源完全替换，这个过程中用户会觉得内容正在逐渐加载即将呈现，降低了用户的焦躁情绪，使得加载过程主观上变得流畅。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

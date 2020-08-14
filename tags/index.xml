@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/</link>
+    <description>Recent content in Tags on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 13 Aug 2020 14:37:01 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>verdaccio</title>
+      <link>https://liuzeaa.github.io/goblog/tags/verdaccio/</link>
+      <pubDate>Thu, 13 Aug 2020 14:37:01 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/verdaccio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nativefier</title>
+      <link>https://liuzeaa.github.io/goblog/tags/nativefier/</link>
+      <pubDate>Thu, 13 Aug 2020 09:08:30 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/nativefier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://liuzeaa.github.io/goblog/tags/docker/</link>
+      <pubDate>Thu, 13 Aug 2020 08:01:40 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Guacamole</title>
+      <link>https://liuzeaa.github.io/goblog/tags/guacamole/</link>
+      <pubDate>Thu, 13 Aug 2020 08:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/guacamole/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>minio</title>
+      <link>https://liuzeaa.github.io/goblog/tags/minio/</link>
+      <pubDate>Thu, 13 Aug 2020 07:56:13 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/minio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>npm</title>
+      <link>https://liuzeaa.github.io/goblog/tags/npm/</link>
+      <pubDate>Sun, 14 Jun 2020 20:21:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/npm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yarn</title>
+      <link>https://liuzeaa.github.io/goblog/tags/yarn/</link>
+      <pubDate>Sun, 14 Jun 2020 20:21:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/yarn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://liuzeaa.github.io/goblog/tags/git/</link>
+      <pubDate>Sun, 09 Jun 2019 18:04:28 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vue2.0</title>
+      <link>https://liuzeaa.github.io/goblog/tags/vue2.0/</link>
+      <pubDate>Sat, 27 Apr 2019 16:07:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/vue2.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>骨架屏</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E9%AA%A8%E6%9E%B6%E5%B1%8F/</link>
+      <pubDate>Sat, 27 Apr 2019 16:07:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E9%AA%A8%E6%9E%B6%E5%B1%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>COS</title>
+      <link>https://liuzeaa.github.io/goblog/tags/cos/</link>
+      <pubDate>Sat, 30 Mar 2019 17:34:07 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/cos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>https://liuzeaa.github.io/goblog/tags/hexo/</link>
+      <pubDate>Sat, 30 Mar 2019 17:34:07 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cli</title>
+      <link>https://liuzeaa.github.io/goblog/tags/cli/</link>
+      <pubDate>Sun, 24 Mar 2019 11:11:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://liuzeaa.github.io/goblog/tags/mysql/</link>
+      <pubDate>Sun, 17 Mar 2019 18:09:33 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vue2.0，clipboard.js</title>
+      <link>https://liuzeaa.github.io/goblog/tags/vue2.0clipboard.js/</link>
+      <pubDate>Sun, 23 Dec 2018 11:30:36 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/vue2.0clipboard.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>移动端</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/</link>
+      <pubDate>Sun, 23 Dec 2018 11:30:36 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript，clipboard.js</title>
+      <link>https://liuzeaa.github.io/goblog/tags/javascriptclipboard.js/</link>
+      <pubDate>Wed, 19 Dec 2018 20:14:17 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/javascriptclipboard.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MongoDB</title>
+      <link>https://liuzeaa.github.io/goblog/tags/mongodb/</link>
+      <pubDate>Sun, 16 Dec 2018 19:22:11 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Node.js</title>
+      <link>https://liuzeaa.github.io/goblog/tags/node.js/</link>
+      <pubDate>Tue, 20 Nov 2018 09:40:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/node.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pm2</title>
+      <link>https://liuzeaa.github.io/goblog/tags/pm2/</link>
+      <pubDate>Tue, 20 Nov 2018 09:40:00 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/pm2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://liuzeaa.github.io/goblog/tags/nginx/</link>
+      <pubDate>Tue, 20 Nov 2018 09:39:26 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>定时任务</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Sun, 08 Jul 2018 18:09:23 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ES6</title>
+      <link>https://liuzeaa.github.io/goblog/tags/es6/</link>
+      <pubDate>Tue, 26 Jun 2018 17:08:51 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://liuzeaa.github.io/goblog/tags/javascript/</link>
+      <pubDate>Tue, 26 Jun 2018 17:08:51 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>点透</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E7%82%B9%E9%80%8F/</link>
+      <pubDate>Thu, 21 Jun 2018 10:53:59 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E7%82%B9%E9%80%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生命周期</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Thu, 14 Jun 2018 09:48:11 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webpack</title>
+      <link>https://liuzeaa.github.io/goblog/tags/webpack/</link>
+      <pubDate>Wed, 13 Jun 2018 13:30:47 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/webpack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>打包工具</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 13 Jun 2018 13:30:47 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>https://liuzeaa.github.io/goblog/tags/api/</link>
+      <pubDate>Tue, 29 May 2018 11:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Express</title>
+      <link>https://liuzeaa.github.io/goblog/tags/express/</link>
+      <pubDate>Tue, 29 May 2018 11:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/express/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>部署</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 29 May 2018 11:00:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apidoc</title>
+      <link>https://liuzeaa.github.io/goblog/tags/apidoc/</link>
+      <pubDate>Sat, 26 May 2018 11:13:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/apidoc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>travis-ci</title>
+      <link>https://liuzeaa.github.io/goblog/tags/travis-ci/</link>
+      <pubDate>Tue, 15 May 2018 16:30:49 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/travis-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>持续集成</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
+      <pubDate>Tue, 15 May 2018 16:30:49 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自动构建</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Tue, 15 May 2018 16:30:49 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>express-generator</title>
+      <link>https://liuzeaa.github.io/goblog/tags/express-generator/</link>
+      <pubDate>Mon, 14 May 2018 16:08:03 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/express-generator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>爬虫</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Sat, 12 May 2018 15:37:42 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E7%88%AC%E8%99%AB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodejs socket.io mongodb</title>
+      <link>https://liuzeaa.github.io/goblog/tags/nodejs-socket.io-mongodb/</link>
+      <pubDate>Fri, 11 May 2018 18:05:25 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/nodejs-socket.io-mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>es6 Promise</title>
+      <link>https://liuzeaa.github.io/goblog/tags/es6-promise/</link>
+      <pubDate>Fri, 11 May 2018 16:47:01 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/es6-promise/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://liuzeaa.github.io/goblog/tags/windows/</link>
+      <pubDate>Tue, 08 May 2018 15:30:32 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>路由</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Mon, 07 May 2018 17:50:08 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E8%B7%AF%E7%94%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cookie</title>
+      <link>https://liuzeaa.github.io/goblog/tags/cookie/</link>
+      <pubDate>Sun, 06 May 2018 17:32:54 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/cookie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>session</title>
+      <link>https://liuzeaa.github.io/goblog/tags/session/</link>
+      <pubDate>Sun, 06 May 2018 17:32:54 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/session/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据类型转换</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sat, 05 May 2018 17:14:25 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>面试题</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 05 May 2018 17:14:25 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSH公钥</title>
+      <link>https://liuzeaa.github.io/goblog/tags/ssh%E5%85%AC%E9%92%A5/</link>
+      <pubDate>Sat, 05 May 2018 16:40:31 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/ssh%E5%85%AC%E9%92%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文件上传</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Fri, 04 May 2018 15:58:58 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数组</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 02 May 2018 16:49:44 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E6%95%B0%E7%BB%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>css</title>
+      <link>https://liuzeaa.github.io/goblog/tags/css/</link>
+      <pubDate>Sat, 28 Apr 2018 13:14:04 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EJS</title>
+      <link>https://liuzeaa.github.io/goblog/tags/ejs/</link>
+      <pubDate>Fri, 27 Apr 2018 13:36:44 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/ejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VSCode</title>
+      <link>https://liuzeaa.github.io/goblog/tags/vscode/</link>
+      <pubDate>Fri, 05 Jan 2018 17:17:59 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>云主机</title>
+      <link>https://liuzeaa.github.io/goblog/tags/%E4%BA%91%E4%B8%BB%E6%9C%BA/</link>
+      <pubDate>Wed, 20 Dec 2017 10:10:37 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/tags/%E4%BA%91%E4%B8%BB%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

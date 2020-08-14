@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue2.0 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/vue2.0/</link>
+    <description>Recent content in vue2.0 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Apr 2019 16:07:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/vue2.0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>给项目加一个骨架屏吧</title>
+      <link>https://liuzeaa.github.io/goblog/post/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7/</link>
+      <pubDate>Sat, 27 Apr 2019 16:07:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7/</guid>
+      <description>&lt;p&gt;骨架屏可以理解为是当数据还未加载进来前，页面的一个空白版本，一个简单的关键渲染路径。用户会看到一个样式简单，描绘了当前页面的大致框架的骨架屏页面，然后骨架屏中各个占位部分被实际资源完全替换，这个过程中用户会觉得内容正在逐渐加载即将呈现，降低了用户的焦躁情绪，使得加载过程主观上变得流畅。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue-cli3设置默认打开浏览器</title>
+      <link>https://liuzeaa.github.io/goblog/post/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+      <pubDate>Sun, 24 Mar 2019 11:11:19 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8/</guid>
+      <description>&lt;p&gt;vue-cli3设置默认打开浏览器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue（scoped）修改UI库组件样式</title>
+      <link>https://liuzeaa.github.io/goblog/post/vue%E4%BF%AE%E6%94%B9ui%E5%BA%93%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F/</link>
+      <pubDate>Sat, 15 Sep 2018 16:40:59 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/vue%E4%BF%AE%E6%94%B9ui%E5%BA%93%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F/</guid>
+      <description>&lt;p&gt;在工作中经常会碰见设计稿和UI库的组件样式不一样，在style标签加了scoped，就无法修改UI组件的样式了，因为当前组件样式只应用到这个组件上。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vue2.0的生命周期</title>
+      <link>https://liuzeaa.github.io/goblog/post/vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Thu, 14 Jun 2018 09:48:11 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description>&lt;p&gt;每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

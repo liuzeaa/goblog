@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Express处理数据请求 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Express处理数据请求</h1>
+  <time datetime=2018-04-02T17:28:39Z class="post-date">Mon, Apr 2, 2018</time>
+  <p>之前文章里面介绍了如何用原生Node处理数据请求。
+现在通过Express框架处理post和get请求。</p>
+<h2 id="处理get请求">处理get请求</h2>
+<p>这个比较简单(不需要使用中间件)直接req.query就能获取到。</p>
+<pre><code>// 服务端代码
+const express = require('express');
+
+let app = express();
+
+
+app.get('/', (req, res) =&gt; {
+    console.log(req.query);
+});
+
+app.listen(8000);
+</code></pre><pre><code>// 客户端代码
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action=&quot;http://localhost:8000&quot; method=&quot;get&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;user&quot; /&gt; &lt;/br&gt;
+        &lt;input type=&quot;password&quot; name=&quot;pass&quot; /&gt; &lt;/br&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>用命令提示行运行服务器，打开刚才写好的网页输入内容提交表单。
+就可以获取到一个json对象如 { user: &lsquo;123&rsquo;, pass: &lsquo;abc&rsquo; } 方便操作。</p>
+<h2 id="处理post请求">处理post请求</h2>
+<p>处理post请求需要用到body-parser这个中间件。
+这个中间件可以解析JSON、Raw、文本、URL-encoded格式的请求体。
+先安装中间件</p>
+<pre><code>npm install body-parser
+</code></pre><p>在项目中引用body-parser中间件。</p>
+<pre><code>// 服务端代码
+const express = require('express');
+const bodyParser = require('body-parser');
+
+let app = express();
+
+// 引用body-parser中间件
+app.use(bodyParser.urlencoded());
+
+app.post('/', (req, res) =&gt; {
+    // req.body post 提交过来的数据
+    console.log(req.body);
+});
+
+app.listen(8000);
+</code></pre><pre><code>// 客户端代码
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action=&quot;http://localhost:8000&quot; method=&quot;post&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;user&quot; /&gt; &lt;/br&gt;
+        &lt;input type=&quot;password&quot; name=&quot;pass&quot; /&gt; &lt;/br&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>用命令提示行运行服务器，打开刚才写好的网页输入内容提交表单。
+就可以获取到一个json对象如 { user: &lsquo;lanpangzhi&rsquo;, pass: &lsquo;123456&rsquo; } 方便操作。
+这样我们就通过Express获取到get和post提交过来的数据了。</p>
+<p>urlencoded() 方法配置参数 (options)</p>
+<ul>
+<li>extended 设置为false时，会使用querystring库解析URL编码的数据；当设置为true时，会使用qs库解析URL编码的数据。后没有指定编码时，使用此编码。默认为true。但使用默认已被弃用。 请研究qs和querystring之间的差异并选择适当的设置。</li>
+<li>inflate  设置为true时，deflate压缩数据会被解压缩；设置为true时，deflate压缩数据会被拒绝。默认为true。</li>
+<li>limit 设置最大请求头大小， 如果这是一个数字，那么该值指定字节数; 如果它是一个字符串，则将该值传递给字节库解析。默认为100kb。</li>
+<li>parameterLimit  用于设置URL编码值的最大参数数量， 如果请求包含的参数多于此值，那么413将返回给客户端。默认为1000。</li>
+<li>type  用于设置为指定MIME类型的数据使用当前解析中间件。这个选项可以是一个函数或是字符串，当是字符串是会使用type-is来查找MIMI类型；当为函数是，中间件会通过fn(req)来获取实际值。默认为application/octet-stream。</li>
+<li>verify  这个选项仅在verify(req, res, buf, encoding)时受支持。</li>
+</ul>
+<p>body-parser里面还有另外几个方法，可以自行去github看下。</p>
+<h1 id="参考">参考</h1>
+<p>[https://github.com/expressjs/body-parser]</p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

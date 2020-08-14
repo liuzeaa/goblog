@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>定时任务 on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+    <description>Recent content in 定时任务 on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 08 Jul 2018 18:09:23 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>node定时任务</title>
+      <link>https://liuzeaa.github.io/goblog/post/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Sun, 08 Jul 2018 18:09:23 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description>&lt;p&gt;我们再开发过程中，会经常碰见这样的场景例如每天早上八点执行一个操作或者执行一个爬虫，下面就说一下如何用node-cron处理这些定时任务。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs socket.io mongodb on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/nodejs-socket.io-mongodb/</link>
+    <description>Recent content in nodejs socket.io mongodb on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 May 2018 18:05:25 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/nodejs-socket.io-mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>socket.io使用</title>
+      <link>https://liuzeaa.github.io/goblog/post/socket-io%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 11 May 2018 18:05:25 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/socket-io%E4%BD%BF%E7%94%A8/</guid>
+      <description>项目地址
+如果喜欢，希望大家star</description>
+    </item>
+    
+  </channel>
+</rss>

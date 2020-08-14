@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Docker &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Docker</h1>
+  <time datetime=2020-08-13T08:01:40Z class="post-date">Thu, Aug 13, 2020</time>
+  <p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。</p>
+<p>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。</p>
+<p>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
+<h3 id="swarm集群">swarm集群</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">##### 初始化集群</span>
+&gt; docker swarm init --advertise-addr &lt;MANAGER-IP&gt;
+
+<span style="color:#75715e">##### 检索工作程序的加入命令(管理器节点上运行)</span>
+&gt; docker swarm join-token <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>worker|manager<span style="color:#f92672">)</span>
+&gt; docker swarm join-token manager
+&gt; docker swarm join-token worker
+
+<span style="color:#75715e">##### 加入集群</span>
+&gt; docker swarm join --token &lt;your_token&gt; &lt;your_ip_address&gt;:2377
+
+<span style="color:#75715e">##### 查看集群节点信息（需Manager)</span>
+&gt; docker node ls
+
+<span style="color:#75715e">##### 将 node2 提升为 manager</span>
+&gt; docker node promote node2
+
+<span style="color:#75715e">##### 将 node2 降级为 worker</span>
+&gt; docker node demote node2
+
+<span style="color:#75715e">##### 脱离集群</span>
+&gt; docker swarm leave
+&gt; docker swarm leave -f -- 强制该节点离开群，忽略警告
+
+<span style="color:#75715e">##### 驱逐节点并显示它的新可用性</span>
+&gt; docker node update --availability drain node13
+&gt; docker node inspect node13 --pretty
+
+<span style="color:#75715e">##### 恢复在线状态并显示它的新可用性</span>
+&gt; docker node update --availability active node13
+&gt; docker node inspect node13 --pretty
+
+<span style="color:#75715e">##### 更新swarm</span>
+<span style="color:#75715e">###### 节点证书的有效期</span>
+&gt; docker swarm update --cert-expiry 720h
+</code></pre></div><h3 id="服务">服务</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">##### 查看服务</span>
+&gt; docker service ls
+&gt; docker service ps web01
+&gt; docker service inspect --pretty web01
+
+<span style="color:#75715e">##### 部署服务</span>
+&gt; docker service create -p 80:80 --name web nginx:latest
+&gt; docker service create --replicas <span style="color:#ae81ff">1</span> --name web01 nginx
+&gt; docker service create --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> --name web01 -p 88:80 nginx:1.12
+
+<span style="color:#75715e">##### 删除服务</span>
+&gt; docker service rm web
+
+<span style="color:#75715e">##### 检查服务</span>
+&gt; docker service inspect &lt;serviceName&gt;
+&gt; docker service inspect web
+
+<span style="color:#75715e">##### 扩展服务</span>
+&gt; docker service scale web<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>
+&gt; docker service ls
+&gt; docker service ps web
+
+<span style="color:#75715e">##### 滚动更新</span>
+&gt; docker service create --replicas <span style="color:#ae81ff">3</span> --name redis --update-delay 10s redis:3.0.6
+&gt; docker service update --image redis:3.0.7 redis
+</code></pre></div><h3 id="docker-engine-api">Docker Engine API</h3>
+<ul>
+<li><a href="https://docs.docker.com/engine/api/">#Develop with Docker Engine API</a></li>
+</ul>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

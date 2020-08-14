@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>http模块 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>http模块</h1>
+  <time datetime=2018-01-15T17:05:37Z class="post-date">Mon, Jan 15, 2018</time>
+  <p>http模块是node提供搭建http客户端和服务端的核心模块。</p>
+<h2 id="什么是客户端和什么是服务端">什么是客户端和什么是服务端</h2>
+<p>客户端（Client），是指与服务器相对应，为客户提供本地服务的程序。一般安装在普通的用户机上，需要与服务端互相配合运行。互联网发展以后，较常用的客户端包括了如万维网使用的网页浏览器，收寄电子邮件时的电子邮件客户端，以及即时通信的客户端软件等。
+服务端(Server)，是为客户端服务的，服务的内容诸如向客户端提供资源，保存客户端数据。是实现游戏特色化的重要途径，也是最直接可以通过游戏表现出来的技术，比如你要修改某个NPC的参数，重加载后，在游戏内立刻体现出来。</p>
+<h2 id="搭建一个服务器">搭建一个服务器</h2>
+<pre><code>var http = require('http');
+
+var app = http.createServer(function(request,response){
+	response.writeHead(200, {'Content-Type': 'text/plain'});
+	response.write('入坑了...');
+	response.end();
+});
+
+app.listen(8000);
+</code></pre><p>http.createServer() 创建一个服务器的实例，它的参数是一个函数，函数里有两个参数request和response，request是从客户端的请求、response是服务端的响应。
+输入 http://localhost:8000 就可以看到（入坑了&hellip;）这几个字。代表创建成功。
+response.writeHead() 发送一个http响应头给请求。
+response.write() 向客户端发送响应体。
+response.end()  结束响应。
+listen() 监听的端口。</p>
+<h2 id="客户端向http服务器发起请求">客户端向HTTP服务器发起请求</h2>
+<h3 id="httprequestoptions-callback">http.request(options[, callback])</h3>
+<pre><code>// request.js
+var http = require('http');
+var querystring = require('querystring');
+const postData = querystring.stringify({
+	'msg': 'Hello World!'
+});
+
+const options = {
+	hostname: 'localhost',
+	port: 80,
+	path: '/',
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Content-Length': Buffer.byteLength(postData)
+	}
+};
+
+const req = http.request(options, (res) =&gt; {
+	console.log(`状态码: ${res.statusCode}`);
+	console.log(`响应头: ${JSON.stringify(res.headers)}`);
+	res.setEncoding('utf8');
+	res.on('data', (chunk) =&gt; {
+		console.log(`响应主体: ${chunk}`);
+	});
+	res.on('end', () =&gt; {
+		console.log('响应中已无数据。');
+	});
+});
+
+req.on('error', (e) =&gt; {
+	console.error(`请求遇到问题: ${e.message}`);
+});
+
+// 写入数据到请求主体
+req.write(postData);
+req.end();
+
+// sever.js
+let http = require('http');
+let querystring = require('querystring');
+
+let app = http.createServer( (res,req) =&gt; {
+    let str = '';
+    res.on('data',  (data) =&gt; {
+        str += data
+    });
+    res.on(&quot;end&quot;, () =&gt; {
+       
+        str = querystring.parse(str)
+        console.log(str)
+		// 向客户端返回数据
+        req.end(`提交成功了: ${str.msg}`) 
+    })	
+      
+});
+
+app.listen(80);
+</code></pre><p>客户端会输出</p>
+<pre><code>状态码: 200
+响应头: {&quot;date&quot;:&quot;Fri, 02 Feb 2018 03:37:39 GMT&quot;,&quot;connection&quot;:&quot;close&quot;,&quot;content-length&quot;:&quot;29&quot;}
+响应主体: 提交成功了: Hello World!
+响应中已无数据。
+</code></pre><p>我们可以写个定时器用request方法，一直向某个网站提交信息。</p>
+<p>options: Object | string | URL</p>
+<ul>
+<li>protocol &lt;string&gt; 使用的协议。默认为 http:。</li>
+<li>host &lt;string&gt; 请求发送至的服务器的域名或 IP 地址。默认为 localhost。</li>
+<li>hostname &lt;string&gt; host 的别名。为了支持 url.parse()，hostname 优先于 host。</li>
+<li>family &lt;number&gt; 当解析 host 和 hostname 时使用的 IP 地址族。 有效值是 4 或 6。当未指定时，则同时使用 IP v4 和 v6。</li>
+<li>port &lt;number&gt; 远程服务器的端口。默认为 80。</li>
+<li>localAddress &lt;string&gt; 为网络连接绑定的本地接口。</li>
+<li>socketPath &lt;string&gt; Unix 域 Socket（使用 host:port 或 socketPath）。</li>
+<li>method &lt;string&gt; 指定 HTTP 请求方法的字符串。默认为 &lsquo;GET&rsquo;。</li>
+<li>path &lt;string&gt; 请求的路径。默认为 &lsquo;/'。 应包括查询字符串（如有的话）。如 &lsquo;/index.html?page=12&rsquo;。 当请求的路径中包含非法字符时，会抛出异常。 目前只有空字符会被拒绝，但未来可能会变化。</li>
+<li>headers &lt;Object&gt; 包含请求头的对象。</li>
+<li>auth &lt;string&gt; 基本身份验证，如 &lsquo;user:password&rsquo; 用来计算 Authorization 请求头。</li>
+<li>agent &lt;http.Agent&gt; | &lt;boolean&gt; 控制 Agent 的行为。 可能的值有：undefined (默认): 对该主机和端口使用 http.globalAgent。</li>
+<li>Agent 对象：显式地使用传入的 Agent。false: 创建一个新的使用默认值的 Agent。</li>
+<li>createConnection &lt;Function&gt; 当不使用 agent 选项时，为请求创建一个 socket 或流。 这可以用于避免仅仅创建一个自定义的 Agent 类来覆盖默认的 createConnection 函数。详见 agent.createConnection()。</li>
+<li>timeout &lt;number&gt;: 指定 socket 超时的毫秒数。 它设置了 socket 等待连接的超时时间。</li>
+</ul>
+<h3 id="发起get请求-httpgetoptions-callback">发起get请求 http.get(options[, callback])</h3>
+<pre><code>var http = require('http');
+
+http.get('http://blog.langpz.com', (res) =&gt; {
+	const { statusCode } = res;
+	let str = &quot;&quot;;
+	let error;
+	if (statusCode !== 200) {
+		error = new Error('请求失败。\n' +
+						`状态码: ${statusCode}`);
+	}
+	res.on(&quot;data&quot;, (data) =&gt; {
+		str += data
+	});
+
+	if (error) {
+		console.error(error.message);
+		// 消耗响应数据以释放内存
+		res.resume();
+		return;
+	}
+
+	res.on(&quot;end&quot;, () =&gt; {
+		console.log(str)
+	})		
+}).on('error', (e) =&gt; {
+	console.error(`出错了: ${e.message}`);
+});
+</code></pre><p>网站内容就爬下来了。
+该方法与 http.request() 唯一的区别是它设置请求方法为 GET 且自动调用 req.end()。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF">https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF</a>
+<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF">https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF</a>
+<a href="http://nodejs.cn/api/http.html#http_http_request_options_callback">http://nodejs.cn/api/http.html#http_http_request_options_callback</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

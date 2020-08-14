@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Git拉取远程分支到本地 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Git拉取远程分支到本地</h1>
+  <time datetime=2018-10-25T20:42:31Z class="post-date">Thu, Oct 25, 2018</time>
+  <p>经常会碰见拉取远端的分支到本地，步骤和命令经常记不住所以只好做个笔记。</p>
+<h2 id="拉取分支">拉取分支</h2>
+<p>首先你得先查看你是否和远端的仓库建立连接。</p>
+<pre><code>git remote -v
+</code></pre><p>如果没有的话那就自行添加一下</p>
+<pre><code>git remote add origin  xxxx(你远程分支的git仓库地址)
+</code></pre><p>如果每天要提交代码 ，可以绕过上面这一步，直接切换分支</p>
+<pre><code>git checkout -b Q3 origin/Q3
+</code></pre><p>这个时候操作失败提示如下：</p>
+<ul>
+<li>fatal: &lsquo;origin/Q3&rsquo; is not a commit and a branch &lsquo;Q3&rsquo; cannot be created from it
+代表你本地没有Q3这个远程分支。</li>
+</ul>
+<p>可以执行 git branch -r 来检查本地是否有Q3远程分支。
+拉取远程分支到本地并切换分支。</p>
+<pre><code>git fetch origin Q3
+git checkout -b Q3 origin/Q3
+</code></pre><p>拉取远程分支到本地</p>
+<pre><code>git pull origin Q3
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="https://curder.gitbooks.io/blog/git/remote_repository_pull.html">https://curder.gitbooks.io/blog/git/remote_repository_pull.html</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

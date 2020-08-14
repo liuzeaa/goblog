@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>minIO使用最佳实践 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>minIO使用最佳实践</h1>
+  <time datetime=2020-08-13T07:56:13Z class="post-date">Thu, Aug 13, 2020</time>
+  <h2 id="约定">约定</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>endPoint</td>
+<td>192.168.2.250</td>
+<td>minio服务器的ip，或者是代理服务器的ip</td>
+</tr>
+<tr>
+<td>port</td>
+<td>9000</td>
+<td>约定不变</td>
+</tr>
+<tr>
+<td>useSSL</td>
+<td>false</td>
+<td>约定不变</td>
+</tr>
+<tr>
+<td>accessKey</td>
+<td>admin</td>
+<td>研发测试环境使用此值，生产环境要改变</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>password</td>
+<td>研发测试环境使用此值，生产环境要改变</td>
+</tr>
+</tbody>
+</table>
+<h2 id="路径规范">路径规范</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>路径</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket</td>
+<td>每个项目使用唯一的bucket名称，如ZStack_dev、ZStack_test&hellip;&hellip;</td>
+<td>bucket的名称在go的配置文件配置</td>
+</tr>
+<tr>
+<td>工具库</td>
+<td>bucket/gongju/双日期/filename（随机）</td>
+<td>上传工具</td>
+</tr>
+<tr>
+<td>漏洞库</td>
+<td>bucket/loudong/双日期/filename（随机）</td>
+<td>上传漏洞</td>
+</tr>
+<tr>
+<td>武器库</td>
+<td>bucket/wuqi/双日期/filename(随机)</td>
+<td>上传武器</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>bucket/document/双日期/filename(随机)</td>
+<td>上传文档</td>
+</tr>
+<tr>
+<td>书籍</td>
+<td>bucket/book/双日期/filename(随机)</td>
+<td>上传书籍</td>
+</tr>
+<tr>
+<td>文章</td>
+<td>bucket/article/双日期/filename（随机）</td>
+<td>文章中上传图片</td>
+</tr>
+<tr>
+<td>文件</td>
+<td>bucket/file/双日期/filename（随机）</td>
+<td>用户上传文件</td>
+</tr>
+<tr>
+<td>截图</td>
+<td>bucket/screenshot/双日期/filename（随机）</td>
+<td>截图后生成的图片</td>
+</tr>
+<tr>
+<td>未分类</td>
+<td>bucket/other/双日期/filename（随机）</td>
+<td>新业务场景产生，还未来得及分类的文件统一放在未分类目录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="接口">接口</h2>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>接口人</th>
+<th>minIO接口</th>
+<th>文档地址</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建存储桶</td>
+<td>后端</td>
+<td>非接口</td>
+<td><a href="https://docs.minio.io/cn/golang-client-api-reference.html#MakeBucket">https://docs.minio.io/cn/golang-client-api-reference.html#MakeBucket</a></td>
+<td>在Golang启动时进行创建，只创建一次</td>
+</tr>
+<tr>
+<td>文件上传步骤1</td>
+<td>后端</td>
+<td>PresignedPutObject(bucketName, objectName string, expiry time.Duration) (*url.URL, error)</td>
+<td><a href="https://docs.minio.io/cn/golang-client-api-reference.html#PresignedPutObject">https://docs.minio.io/cn/golang-client-api-reference.html#PresignedPutObject</a></td>
+<td>通过浏览器直接上传一个文件到S3服务，而不需要暴露S3服务的认证信息给这个用户。<!-- raw HTML omitted -->该接口会返回上传文件的url地址</td>
+</tr>
+<tr>
+<td>文件上传步骤2</td>
+<td>前端</td>
+<td></td>
+<td></td>
+<td>从一个stream/Buffer中上传一个对象</td>
+</tr>
+<tr>
+<td>文件下载</td>
+<td>后端</td>
+<td>PresignedGetObject(bucketName, objectName string, expiry time.Duration, reqParams url.Values) (*url.URL, error)</td>
+<td><a href="https://docs.min.io/cn/golang-client-api-reference.html">https://docs.min.io/cn/golang-client-api-reference.html</a></td>
+<td>生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。这个presigned URL可以设置一个失效时间，默认值是7天。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="技术细节">技术细节</h2>
+<ul>
+<li>文件的上传大小，通过前端进行限制，nginx也要进行限制</li>
+</ul>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

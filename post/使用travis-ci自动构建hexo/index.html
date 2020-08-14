@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>使用travis-ci自动构建Hexo &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>使用travis-ci自动构建Hexo</h1>
+  <time datetime=2018-05-15T16:30:49Z class="post-date">Tue, May 15, 2018</time>
+  <p>持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。</p>
+<p>Travis CI是在软件开发领域中的一个在线的，分布式的持续集成服务，用来构建及测试在GitHub托管的代码。这个软件的代码同时也是开源的，可以在GitHub上下载到，尽管开发者当前并不推荐在闭源项目中单独使用它。</p>
+<h2 id="构建流程">构建流程</h2>
+<p>本地写完文章  =&gt;  push github  =&gt;  GitHub触发Travis CI构建  =&gt;  执行命令  =&gt;  部署  =&gt;   完成。</p>
+<h2 id="用github登陆travis-ci">用github登陆travis-ci</h2>
+<p><a href="https://travis-ci.com">https://travis-ci.com</a>然后添加到你要激活的存储库。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180738.png" alt="">
+然后选择你要使用的仓库，我这里选择的是lanpangzhi.github.io，我放hexo博客的仓库。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180908.png" alt=""></p>
+<p>然后生成github和coding的Token。
+先生成github的Token。
+<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>
+点击Generate new token。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180517132208.png" alt="">
+然后生成Token。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517132418.png" alt="">
+开始生成coding的Token。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517132723.png" alt=""></p>
+<p>点击新建令牌。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517132941.png" alt="">
+复制令牌。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517133513.png" alt=""></p>
+<p>登陆travis-ci把github和coding的Token复制到环境变量。
+<a href="https://travis-ci.com/">https://travis-ci.com/</a>
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517133828.png" alt="">
+点击Settings。
+添加CI_TOKEN和CO_TOKEN环境变量。
+CI_TOKEN是github的Token。
+CO_TOKEN是coding的Token。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517134401.png" alt=""></p>
+<p>在项目根目录新建.travis.yml 文件</p>
+<pre><code>language: node_js
+node_js:
+- 8.9.0
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm install hexo-cli -g
+install:
+- npm install
+script:
+- hexo clean
+- hexo generate
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name &quot;github用户名&quot;
+  - git config user.email &quot;github邮箱&quot;
+  - git add .
+  - git commit -m &quot;TravisCI 自动部署&quot;
+  # Github Pages
+  - git push --force --quiet &quot;https://${CI_TOKEN}@${GH_REF}&quot; master:master 
+  # Coding Pages
+  - git push --force --quiet &quot;https://coding用户名:${CO_TOKEN}@${CO_REF}&quot; master:master
+
+branches:
+  only:
+  - indigo   这里替换你要监听的分支
+
+env:
+ global:
+   # Github Pages
+   - GH_REF: github.com/lanpangzhi/lanpangzhi.github.io  这里替换你的github仓库地址
+   # Coding Pages
+   - CO_REF: git.coding.net/bule/bule.coding.me.git  这里替换你的coding仓库地址
+</code></pre><p>然后提交github，travis-ci就会自动构建了。
+现在写博客只需要两步操作，第一步 hexo new &ldquo;新的文章&rdquo;，第二步提交到github。travis-ci会帮你自动部署的。
+省去了 hexo clean hexo g -d 的环节。</p>
+<p>看到这张图就代表成功了。
+<img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180517131546.png" alt=""></p>
+<h2 id="如果使用git子模块的话请使用https地址或者在travisyml文件禁用子模块否则构建会报错提示没有权限">如果使用git子模块的话请使用https地址，或者在.travis.yml文件禁用子模块，否则构建会报错，提示没有权限。</h2>
+<h1 id="参考">参考</h1>
+<p><a href="https://docs.travis-ci.com/user/for-beginners">https://docs.travis-ci.com/user/for-beginners</a>
+<a href="https://zh.wikipedia.org/wiki/Travis_CI">https://zh.wikipedia.org/wiki/Travis_CI</a>
+<a href="https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/6250744">https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/6250744</a>
+<a href="https://blog.csdn.net/qinyuanpei/article/details/79388983">https://blog.csdn.net/qinyuanpei/article/details/79388983</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>es6 Promise on 阿泽的博客</title>
+    <link>https://liuzeaa.github.io/goblog/tags/es6-promise/</link>
+    <description>Recent content in es6 Promise on 阿泽的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 May 2018 16:47:01 +0000</lastBuildDate>
+    
+	<atom:link href="https://liuzeaa.github.io/goblog/tags/es6-promise/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Promise封装ajax示例</title>
+      <link>https://liuzeaa.github.io/goblog/post/promise%E5%B0%81%E8%A3%85ajax%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Fri, 11 May 2018 16:47:01 +0000</pubDate>
+      
+      <guid>https://liuzeaa.github.io/goblog/post/promise%E5%B0%81%E8%A3%85ajax%E7%A4%BA%E4%BE%8B/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

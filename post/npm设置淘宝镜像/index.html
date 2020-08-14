@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>npm设置淘宝镜像 &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>npm设置淘宝镜像</h1>
+  <time datetime=2017-12-15T16:06:34Z class="post-date">Fri, Dec 15, 2017</time>
+  <blockquote>
+<p>我们通过npm install xxx 安装包的过程会特别慢，或者安装半天突然报错。这是因为npm镜像地址在国外，所以访问会慢有的时候还访问不到&hellip;..（天朝的万能的防火墙）</p>
+</blockquote>
+<h2 id="我们可以通过设置淘宝镜像来解决问题">我们可以通过设置淘宝镜像来解决问题</h2>
+<blockquote>
+<p>淘宝镜像同步频率目前为10分钟一次以保证尽量与官方服务同步。</p>
+</blockquote>
+<p>设置成淘宝镜像</p>
+<pre><code>npm config set registry http://registry.npm.taobao.org
+</code></pre><p>查看设置是否成功</p>
+<pre><code>npm get registry 
+</code></pre><p><img src="http://hexo-1252491761.file.myqcloud.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F/20171215161837.png" alt=""></p>
+<h2 id="注意如果你换成淘宝镜像的话会影响你发布模块这时候需要换回npm官网的镜像">注意如果你换成淘宝镜像的话，会影响你发布模块，这时候需要换回npm官网的镜像</h2>
+<pre><code>npm config set registry https://registry.npmjs.org
+</code></pre>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

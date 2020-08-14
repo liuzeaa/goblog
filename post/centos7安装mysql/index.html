@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>centos7安装MySQL &middot; 阿泽的博客</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuzeaa.github.io/goblog/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuzeaa.github.io/goblog/"><h1>阿泽的博客</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuzeaa.github.io/goblog/">Home</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>centos7安装MySQL</h1>
+  <time datetime=2019-03-17T18:09:33Z class="post-date">Sun, Mar 17, 2019</time>
+  <p>先去MySQL官网找到下载链接(<a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a>)</p>
+<h2 id="下载安装">下载安装</h2>
+<p><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/centos7%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720190317194358.png" alt="">
+执行下面的命令下载并安装MySQL</p>
+<pre><code>wget http://repo.mysql.com/mysql80-community-release-el7-2.noarch.rpm
+rpm -Uvh mysql80-community-release-el7-2.noarch.rpm
+yum update
+yum install mysql-community-server
+</code></pre><h2 id="启动mysql服务器">启动MySQL服务器</h2>
+<p>执行下面的命令启动MySQL</p>
+<pre><code>service mysqld start
+</code></pre><p>执行下面的命令检测MySQL状态</p>
+<pre><code>service mysqld status
+</code></pre><h1 id="参考">参考</h1>
+<p><a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

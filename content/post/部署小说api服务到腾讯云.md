@@ -148,6 +148,7 @@ server {
         proxy_set_header   Host             $http_host;
         proxy_set_header   X-NginX-Proxy    true;
         proxy_redirect     off;
+	proxy_http_version 1.1;
     }
 }
 ```
